@@ -1,4 +1,5 @@
 {
-    "source": "/blog/:path*",
-    "destination": "/:path*"
-}
+    "redirects": [
+      { "source": "/me", "destination": "/profile.html", "permanent": false }
+    ]
+  }
