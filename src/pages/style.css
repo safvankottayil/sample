@@ -1,0 +1,9 @@
+.dashbord-scroll-bar::-webkit-scrollbar{
+  width: 9px;
+  background-color: rgb(209, 205, 205);
+  border-radius: 8px;
+}
+.dashbord-scroll-bar::-webkit-scrollbar-thumb{
+    background-color: rgb(59, 122, 231);
+    border-radius: 8px;
+  }

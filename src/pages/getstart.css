@@ -1,0 +1,40 @@
+.get-start-text-grey{
+    color: var(--color-text-text-subtle, #505050)
+}
+.get-start-cart-border{
+    border-radius: var(--spacing-system-radius-lg, 16px);
+border-top: 1px solid var(--color-border-border-subtle, #C6C6C6);
+border-right: var(--spacing-0, 1px) solid var(--color-border-border-subtle, #C6C6C6);
+border-bottom: var(--spacing-0, 1px) solid var(--color-border-border-subtle, #C6C6C6);
+border-left: var(--spacing-0, 1px) solid var(--color-border-border-subtle, #C6C6C6);
+}
+.get-start-cart-border h1{
+    color: var(--color-text-text-default, #1C1C1C);
+}
+.get-start-cart-border p{
+    color: var(--color-text-text-subtle, #505050);
+}
+.or-text{
+    color: var(--color-text-text-subtlest, #ADADAD);
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.get-start-cart-border button{
+    border-radius: var(--spacing-system-radius-sm, 8px);
+background: var(--color-background-bg-secondary-default, #25D366);
+}
+.code{
+  background: url('/public/qr-code.jpg');
+  background-size:cover ;
+  
+}
+.modal-input-border{
+    border-radius: 12px;
+border-top: 1px solid var(--color-border-border-active, #B9B9B9);
+border-right: var(--spacing-0, 1px) solid var(--color-border-border-active, #B9B9B9);
+border-bottom: var(--spacing-0, 1px) solid var(--color-border-border-active, #B9B9B9);
+border-left: var(--spacing-0, 1px) solid var(--color-border-border-active, #B9B9B9);
+background: var(--primary-gray-10, #FFF);
+}

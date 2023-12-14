@@ -1,0 +1,8 @@
+.modal-bg-raduis{
+    border-radius: var(--spacing-system-radius-lg, 16px);
+    background: var(--color-background-bg, #FFF);
+}
+.get-strat-btn-color{
+    border-radius: var(--spacing-system-radius-sm, 8px);
+background: var(--color-brand-primary, #176AF2);
+}

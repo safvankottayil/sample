@@ -1,0 +1,91 @@
+.book-demo-text-blue{
+    color: var(--color-text-primary-default, #176AF2);
+font-size: 36px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.book-demo-text-gray{
+color: var(--color-text-text-subtle, #505050);
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.list li{
+    color: var(--color-text-text-subtle, #505050);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.book-demo-form-border{
+    border-radius: var(--spacing-6, 24px);
+border-top: 1px solid var(--color-border-border-subtlest, #E1E1E1);
+border-right: var(--spacing-0, 1px) solid var(--color-border-border-subtlest, #E1E1E1);
+border-bottom: var(--spacing-0, 1px) solid var(--color-border-border-subtlest, #E1E1E1);
+border-left: var(--spacing-0, 1px) solid var(--color-border-border-subtlest, #E1E1E1);
+}
+.form-title{
+    color: var(--color-text-text-default, #1C1C1C);
+
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.form-secont-text{
+    color: var(--color-text-text-subtle, #505050);
+
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.book-demo-input-text{
+    color: var(--color-text-text-subtle, #505050);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.08px;
+}
+.book-demo-input-border{
+    border-radius: 12px;
+border-top: 1px solid var(--primary-gray-50, #C2C2C2);
+border-right: var(--spacing-0, 1px) solid var(--primary-gray-50, #C2C2C2);
+border-bottom: var(--spacing-0, 1px) solid var(--primary-gray-50, #C2C2C2);
+border-left: var(--spacing-0, 1px) solid var(--primary-gray-50, #C2C2C2);
+background: var(--primary-gray-10, #FFF);
+}
+.book-demo-input-label{
+    color: var(--primary-gray-100, #0A0A0A);
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; /* 142.857% */
+letter-spacing: 0.07px;
+}
+.radio-btn-top-text{
+    color: var(--primary-gray-100, #0A0A0A);
+
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 20px; /* 142.857% */
+letter-spacing: 0.07px;
+}
+.submit-btn{
+border-radius: var(--spacing-system-radius-md, 12px);
+background: var(--color-brand-primary, #176AF2);
+color: var(--color-text-text-inverse, #FFF);
+text-align: center;
+/* H1/SemiBold */
+height: 44px;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 120%; /* 21.6px */
+}

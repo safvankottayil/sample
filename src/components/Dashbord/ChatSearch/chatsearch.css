@@ -1,0 +1,125 @@
+.chat-user-search{
+
+   width: 278px;
+
+   gap: var(--spacing-system-spacing-xs, 8px);
+   border-right: 1px solid var(--color-border-border-subtlest, #E1E1E1);
+   border-bottom: var(--spacing-0, 0px) solid var(--color-border-border-subtlest, #E1E1E1);
+   border-left: var(--spacing-0, 0px) solid var(--color-border-border-subtlest, #E1E1E1);
+}
+.chat-input-search{
+    border-radius: var(--spacing-system-radius-sm, 8px);
+    border-top: 1px solid var(--color-border-border-subtlest, #E1E1E1);
+    border-right: var(--spacing-0, 1px) solid var(--color-border-border-subtlest, #E1E1E1);
+    border-bottom: var(--spacing-0, 1px) solid var(--color-border-border-subtlest, #E1E1E1);
+    border-left: var(--spacing-0, 1px) solid var(--color-border-border-subtlest, #E1E1E1);
+    background: var(--color-border-input-field, #FFF);
+    color: var(--color-text-text-subtlest, #ADADAD);
+
+    
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 16.8px */
+}
+.filter-bg{
+    border-radius: var(--radius-8, 8px);
+    background: var(--color-background-bg-primary-default, #176AF2);
+    display: flex;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+}
+.chat-search-not-found-text{
+    color: var(--color-text-text-subtlest, #ADADAD);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 16.8px */
+}
+.user-list-item-active{
+    border-radius: var(--spacing-system-radius-sm, 8px);
+    border: 1px solid var(--color-border-primary-hover, #3E83F4);
+}
+.user-list-item{
+    border-radius: var(--spacing-system-radius-none, 0px);
+    border-right: var(--spacing-0, 0px) solid var(--color-border-border-subtlest, #E1E1E1);
+    border-bottom: 1px solid var(--color-border-border-subtlest, #E1E1E1);
+    border-left: var(--spacing-0, 0px) solid var(--color-border-border-subtlest, #E1E1E1);
+}
+.user-list-box{
+    display: flex;
+    padding: var(--spacing-system-spacing-xs, 8px);
+    align-items: flex-start;
+    gap: var(--spacing-system-spacing-xs, 8px);
+    align-self: stretch;    
+}
+.user-list-name{
+    color: var(--color-text-text-default, #1C1C1C);;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 16.8px */
+}
+.user-list-time{
+    color: var(--color-text-text-subtlest, #ADADAD);
+    text-align: right;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 13.2px */
+}
+.user-list-msg-text{
+    color: var(--color-text-text-subtle, #505050);
+    
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 14.4px */
+}
+.user-list-msg-status-box{
+    display: flex;
+    height: 18px;
+    padding: 0px var(--spacing-system-spacing-xs, 8px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-system-spacing-xxs, 4px);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%
+}
+.user-list-status-blue{
+    border-radius: var(--spacing-system-radius-round, 360px);
+background: var(--color-background-bg-surface-primary, #E8F0FE);
+    color: var(--color-text-primary-default, #176AF2);
+}
+.user-list-status-yellow{
+  color: var(--color-text-text-warning, #F80);
+  border-radius: var(--spacing-system-radius-round, 360px);
+background: var(--color-background-bg-warning, #FFF3E6);
+}
+.user-list-status-success{
+    border-radius: var(--spacing-system-radius-round, 360px);
+background: var(--color-background-bg-success, #E9FBF0);
+    color: var(--color-text-text-success, #1A9447)
+}
+.user-list-status-red{
+     color: var(--color-text-text-danger, #DB0000);
+     border-radius: var(--spacing-system-radius-round, 360px);
+background: var(--color-background-bg-danger, #FBE6E6);
+}
+.user-list-status-black{
+    border-radius: var(--spacing-system-radius-round, 360px);
+background: var(--color-background-bg-neutral-subtle, #F6F6F6);
+    color: var(--color-text-text-default, #1C1C1C);
+}
+.chat-search-scroll-bar::-webkit-scrollbar{
+    width: 6px;
+    background-color: rgb(209, 205, 205);
+    border-radius: 8px;
+  }
+  .chat-search-scroll-bar::-webkit-scrollbar-thumb{
+      background-color: rgb(59, 122, 231);
+      border-radius: 8px;
+    }
