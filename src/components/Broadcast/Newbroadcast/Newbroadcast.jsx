@@ -1,5 +1,5 @@
 import React from "react";
-import "./Newbroadcast.css";
+import "./newbroadcast.css";
 import BoradcastDropDown from "./BoradcastDropDown";
 import AddBtnSvg from "../../Svgs/AddBtnSvg";
 import Search from "../../Search/Search";
