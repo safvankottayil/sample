@@ -8,7 +8,7 @@ import MsgSvg from "../../Svgs/HistoryStatus/MsgSvg";
 import FiledSvg from "../../Svgs/HistoryStatus/FiledSvg";
 import QeueedSvg from "../../Svgs/HistoryStatus/QeueedSvg";
 import ChatSearchSvg from "../../Svgs/ChatSearchSvg";
-import DropDown from "../../Dashbord/DropDown/DropDown";
+import DropDown from "../../FilterDropDown/DropDown";
 import Export from "../../Svgs/Export";
 import DeleteSvg from "../../Svgs/DeleteSvg";
 import Table from "./Table";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./newtemplate.css";
 import NewTemplateDropDown from "./NewTemplateDropDown";
 import SmailSvg from "../../Svgs/SmailSvg";
@@ -11,10 +11,40 @@ import BorderText_Blue from "../../Buttons/BorderText_Blue";
 import AddBtnSvg from "../../Svgs/AddBtnSvg";
 import Meadia from "./Meadia";
 import CallToAction from "./CallToAction";
+import WebLInk from "../../Svgs/WebLInk";
 function NewTemplate() {
-    const[Head,setHeading]=useState('')
-    const[Button,SetButton]=useState('')
-   
+  const [image, setImage] = useState("");
+  const [Head, setHeading] = useState("");
+  const [Buttontype, SetButtonType] = useState("");
+  const [Button, setButton] = useState("");
+  const [bodytext, setBodytext] = useState("");
+  const [textActive, setTextActive] = useState("");
+  const [footerText, setFooterText] = useState("");
+  const BodyRef = useRef(null);
+  const FooterRef = useRef(null);
+  const active = setInterval(() => {
+    if (textActive == "body") {
+      setBodytext(BodyRef.current.innerHTML);
+    } else if (textActive == "footer") {
+      setFooterText(FooterRef.current.innerHTML);
+      console.log(FooterRef.current.innerHTML);
+    }
+  }, 0);
+  textActive ? active : clearInterval(active);
+
+  function BodyTextHandle() {
+    // Remove <div> elements containing only <br> tags
+    // const divsWithOnlyBr = container.querySelectorAll('div:only-child');
+    // divsWithOnlyBr.forEach((div) => {
+    // 	if (div.innerHTML.trim().toLowerCase() === '<br>') {
+    // 		div.parentNode?.removeChild(div);
+    // 	}
+    // });
+    // Remove consecutive <br> tags
+    // const cleanedHtml = container.innerHTML.replace(/<br\s*\/?>\s*(<br\s*\/?>\s*)+/g, '<br>').trim();
+    // setMessageInput(cleanedHtml);
+    // console.log(cleanedHtml);
+  }
   return (
     <div className="flex space-x-4 pb-16 ">
       <div className="new-template-form w-8/12">
@@ -24,8 +54,14 @@ function NewTemplate() {
             type={"input"}
             placeholder={"Template Name"}
           />
-          <NewTemplateDropDown text={"Category"} data={['Select',"Marketing"]} />
-          <NewTemplateDropDown text={"Language"} data={['Select',"English(US)"]} />
+          <NewTemplateDropDown
+            text={"Category"}
+            data={["Select", "Marketing"]}
+          />
+          <NewTemplateDropDown
+            text={"Language"}
+            data={["Select", "English(US)"]}
+          />
         </div>
         <div className="my-2 h-[1px] w-full bg-[#E1E1E1]"></div>
         {/* Heading */}
@@ -37,10 +73,16 @@ function NewTemplate() {
             </p>
           </div>
           <div className="flex w-1/3">
-            <NewTemplateDropDown setvalue={setHeading} data={["None","Meadia"]} />
+            <NewTemplateDropDown
+              setvalue={setHeading}
+              data={["None", "Meadia"]}
+            />
           </div>
-          {/* Show */}
-          <Meadia status={Head=='Meadia'?true:false}/>
+          {/* Meadia Show */}
+          <Meadia
+            setImage={setImage}
+            status={Head == "Meadia" ? true : false}
+          />
           {/* - */}
         </div>
         <div className="my-2 h-[1px] w-full bg-[#E1E1E1]"></div>
@@ -55,8 +97,16 @@ function NewTemplate() {
               get more replies!
             </p>
           </div>
-          {/* ---- */}
-          <div className="new-broadcast-form-select-box w-full min-h-[80px]"></div>
+          {/* --- Edit- */}
+          <div
+            onChange={BodyTextHandle}
+            onFocus={() => setTextActive("body")}
+            onBlur={() => setTextActive("")}
+            ref={BodyRef}
+            contentEditable="true"
+            className="new-broadcast-form-select-box w-full flex felx-col focus:outline-none min-h-[80px]"
+          ></div>
+          {/*  */}
           <div className="flex justify-between w-full">
             <div className="flex items-center space-x-3">
               <SmailSvg width={19} />
@@ -88,7 +138,13 @@ function NewTemplate() {
           </div>
           {/* --- */}
           {/* text */}
-          <div className="new-broadcast-form-select-box w-full min-h-[50px] mt-3"></div>
+          <div
+            onFocus={() => setTextActive("footer")}
+            onBlur={() => setTextActive("")}
+            contentEditable="true"
+            ref={FooterRef}
+            className="new-broadcast-form-select-box w-full min-h-[50px] mt-3"
+          ></div>
           <div className="flex w-full justify-end items-start">
             <p className="text-gray-abz-12">36/60</p>
           </div>
@@ -115,10 +171,17 @@ function NewTemplate() {
           </div>
           {/* body */}
           <div className="flex w-1/3 pt-3">
-            <NewTemplateDropDown setvalue={SetButton} data={["None",'Call to action']} />
+            <NewTemplateDropDown
+              setvalue={SetButtonType}
+              data={["None", "Call to action"]}
+            />
           </div>
           {/* Show Add Button */}
-<CallToAction status={Button=='Call to action'?true:false}/>
+          <CallToAction
+            action={Button}
+            setAction={setButton}
+            status={Buttontype == "Call to action" ? true : false}
+          />
           {/* ---------- */}
         </div>
         {/* Submit */}
@@ -132,8 +195,30 @@ function NewTemplate() {
       {/* --------------preview-------- */}
       <div className="flex w-4/12 ">
         <div className="new-template-form w-full h-fit">
-            <h1>Preview</h1>
-            <div className="new-broadcast-form-select-box h-16"></div>
+          <h1>Preview</h1>
+          <div className="new-broadcast-form-select-box min-h-16">
+            <img src={image ? URL.createObjectURL(image) : ""} alt="" />
+            <div
+              dangerouslySetInnerHTML={{ __html: bodytext }}
+              className="flex flex-col overflow-hidden py-2"
+            ></div>
+            <div
+              dangerouslySetInnerHTML={{ __html: footerText }}
+              className="flex flex-col  py-2"
+            ></div>
+          </div>
+          {Button?.type ? (
+            <div className="  new-broadcast-form-select-box justify-center  w-full">
+              <div className="flex justify-center space-x-2 items-center w-full">
+                <WebLInk />
+                <p className="text-[#0096DE]  text-base font-normal">
+                  {Button?.text}
+                </p>
+              </div>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

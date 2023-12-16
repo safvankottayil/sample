@@ -15,7 +15,7 @@ function TableList() {
           <th className="text-left">Language</th>
           <th className="text-left">Last Updated</th>
           <th className="text-left">Action</th>
-          <th></th>
+         
         </tr>
       </thead>
       <tbody>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import LeftArow from '../../Svgs/LeftArow'
 
 function NewTemplateDropDown({text,data,value,setvalue,type,placeholder}) {
     const [show,setShow]=useState(false)
     const [select,setSelect]=useState(data?data[0]:'')
+    const InputRef=useRef(null)
     useEffect(()=>{
     setSelect(data?data[0]:'')
     },[])
@@ -13,7 +14,7 @@ function NewTemplateDropDown({text,data,value,setvalue,type,placeholder}) {
         <div className="flex space-y-1 flex-col">
          {text?<p className="text-gray-abz-12">{text}</p>:""}
          {type!='input'? <p className="text-black-abz-14">{select}</p>:<>
-         <input type="text" placeholder={placeholder} className='flex  focus:outline-none text-gray-abz-14 flex-grow ' />
+         <input value={value} onChange={()=>setvalue(InputRef.current.value)} ref={InputRef}  type="text" placeholder={placeholder} className='flex  focus:outline-none text-gray-abz-14 flex-grow ' />
          </>}
         </div>
         {type!='input'?

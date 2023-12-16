@@ -1,8 +1,8 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Plusbgblue from '../../Buttons/Plusbgblue'
 import UploadSvg from '../../Svgs/UploadSvg'
 
-function Meadia({status}) {
+function Meadia({status,setImage}) {
     const imgRef=useRef(null)
   return (
     <div className='flex transition-all duration-1000'>
@@ -26,7 +26,7 @@ function Meadia({status}) {
         <Plusbgblue icon={<UploadSvg/>} text={'Upload Media'}/>
         </div>
         
-        <input ref={imgRef} type="file" className='hidden' />
+        <input onChange={()=>setImage(imgRef.current?.files[0])} ref={imgRef} type="file" className='hidden' />
       </div>
     </div>
     </div>

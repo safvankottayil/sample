@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './schedule.css'
 import ChatSearchSvg from "../../Svgs/ChatSearchSvg";
 import AddBtnSvg from "../../Svgs/AddBtnSvg";
-import DropDown from "../../Dashbord/DropDown/DropDown";
+import DropDown from "../../FilterDropDown/DropDown";
 import Export from "../../Svgs/Export";
 import DeleteSvg from "../../Svgs/DeleteSvg";
 import Table from "./Table";

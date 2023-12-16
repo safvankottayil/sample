@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BorderTextBlue from "../Buttons/BorderText_Blue";
 import Plusbgblue from "../Buttons/Plusbgblue";
 import Search from "../Search/Search";
-import DropDown from "../Dashbord/DropDown/DropDown";
+import DropDown from "../FilterDropDown/DropDown";
 import DeleteSvg from "../Svgs/DeleteSvg";
 import Export from "../Svgs/Export";
 import ImportSvg from "../Svgs/ImportSvg";

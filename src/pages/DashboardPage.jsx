@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
-import Sidebar from '../components/Dashbord/SideBar/Sidebar'
-import Navbar from '../components/Dashbord/Navbar/Navbar'
+import DashboardTopDeatials from '../components/Dashbord/DashboardDeatils/DashboardTopDeatials'
+import DashboardChartOne from '../components/Dashbord/DashboardDeatils/DashboardChartOne'
+
 
 function DashboardPage() {
-  const [subPathname,setSubpathName]=useState('')
+  
   return (
-    <></>
+    <>
+    <div className='flex flex-col space-y-7 flex-grow p-6'>
+      
+      <DashboardTopDeatials/>
+      <DashboardChartOne/>
+    </div>
+    </>
   )
 }
 

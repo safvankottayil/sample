@@ -5,7 +5,7 @@ import TemplateSmall from "../Svgs/TemplateSmall";
 import Export from "../Svgs/Export";
 import DeleteSvg from "../Svgs/DeleteSvg";
 import ImportSvg from "../Svgs/ImportSvg";
-import DropDown from "../Dashbord/DropDown/DropDown";
+import DropDown from "../FilterDropDown/DropDown";
 import Search from "../Search/Search";
 import Pagination from "../Pagination/Pagination";
 import TableList from "./TableList";
