@@ -1,12 +1,13 @@
 import React from 'react'
 import './button.css'
 import { Link } from 'react-router-dom'
-function OpenDecument({text,url}) {
+function BorderText_Blue({text,url,icon}) {
   return (
     <Link to={url?url:''} className="border-text-blue cursor-pointer font-abz">
-          {text}
+           {icon? icon:""}
+         <p>{text}</p> 
           </Link>
   )
 }
 
-export default OpenDecument
+export default BorderText_Blue

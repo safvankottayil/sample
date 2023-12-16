@@ -59,7 +59,7 @@ const SidebarItems = [
     Icon: <Template Active={'black'}/>,
     HoverIcon: <Template Active={'#176AF2'} />,
     activeIcon: <Template Active={'#ffff'} />,
-    subitem: [],
+    subitem: [{item:"List"}],
   },
   {
     item: "automations",
@@ -111,7 +111,7 @@ function Sidebar({SubPath,SetSubPath}) {
   return (
     <div
       className={`${
-        show ? "w-[213px]" : "w-0"
+        show ? "w-[213px]" : "w-20"
       } transition-all duration-500 h-screen overflow-hidden font-inter relative`}
     >
       <div
@@ -124,20 +124,20 @@ function Sidebar({SubPath,SetSubPath}) {
       </div>
       <div
         className={`${
-          show ? "w-[213px] " : "w-0 opacity-0"
+          show ? "w-[213px] " : "w-20 "
         } flex transition-all duration-500 sidebar-border overflow-y-auto flex-col h-screen top-0 pt-10  left-0`}
       >
-        <div className="h-screen pb-5  flex flex-col flex-grow px-6 sidebar-scrollbar overflow-y-auto">
+        <div className={`h-screen pb-5  flex flex-col flex-grow ${show?'px-6':'px-0'}  sidebar-scrollbar overflow-y-auto`}>
           <div
             onClick={() => setshow(!show)}
             className={`absolute ${
-              show ? "right-0" : "hidden "
+              show ? "right-0" : "right-0  "
             } arow-bg top-4 py-2`}
           >
-            <LeftArow width={17} />
+          <p className={`${show?'':'rotate-180'}`}><LeftArow width={17} /></p>  
           </div>
-          <div className="flex  items-center pb-10">
-            <Logo height={37} width={29} /> <OsappSvg width={75} height={23} />
+          <div className="flex  justify-center items-center pb-10">
+            <Logo height={37} width={29} />{show?<OsappSvg width={75} height={23} />:''}
           </div>
 
           {/* ----------   Sidebar list ------------ */}
@@ -149,24 +149,24 @@ function Sidebar({SubPath,SetSubPath}) {
                   initial={{opacity:0,x:-20}}
                   animate={{opacity:1,x:0}}
                   transition={{duration:0.5}}
-                  onClick={()=>{setAvtive(items.item),items.subitem[0]?'':navigate(items.url)}}
+                  onClick={()=>{setAvtive(items.item),items.subitem[0]?'':navigate(items.url),setshow(true)}}
                   onMouseOver={()=>setHover(items.item)}
                     className={`  ${
                       active == items.item
                         ? "sidebar-nav-item-active"
                         : "sidebar-nav-item"
-                    }`}
+                    } ${show?'':'justify-center mx-auto'} ` }
                   >
                     {active == items.item ? items.activeIcon :isHover==items.item?items.HoverIcon : items.Icon}
-                    <span
+                    {show?  <span
                       className={
                         active == items.item
                           ? "text-white capitalize"
                           :isHover==items.item?"capitalize text-[#176AF2]": "capitalize text-black"
                       }
                     >
-                      {items.item}
-                    </span>
+                     {items.item}
+                    </span>:""}
                   </motion.p>
                   
                   {active == items.item? (
@@ -176,6 +176,7 @@ function Sidebar({SubPath,SetSubPath}) {
                     exit={{opacity:0,y:-20}}
                     transition={{type:'spring',stiffness:100}}
                     className={`${items.subitem[0]?'h-fit':'h-0'} sidebar-sub-box overflow-hidden`}>
+                      {show?<>
                       {items.subitem.map((item) => {
                         return (
                           <motion.div
@@ -204,7 +205,7 @@ function Sidebar({SubPath,SetSubPath}) {
                             </p>
                           </motion.div>
                         );
-                      })}
+                      })}</>:""}
 
                     </motion.div>
                   ) : (
@@ -218,11 +219,13 @@ function Sidebar({SubPath,SetSubPath}) {
            </div>
           {/* ---------------side bar end and avatar */}
           <div className="flex flex-grow flex-col justify-end">
+            {show==false?"":
             <div className="flex pb-10">
               <button className="sidebar-upgrade-btn">Upgrade Now</button>
-            </div>
-            <div className="flex ">
+            </div>}
+            <div className="flex justify-center ">
               <img src="/avatar.png" className="w-12 h-12" alt="" />
+              {show==false?"":<>
               <div className="flex flex-col justify-center items-start pl-2">
                 <h1 style={{ fontWeight: 500 }} className="text-sm">
                   Name
@@ -233,7 +236,7 @@ function Sidebar({SubPath,SetSubPath}) {
               </div>
               <div className="rotate-90 flex flex-grow justify-center items-start">
                 <LeftArow width={17} />
-              </div>
+              </div> </>}
             </div>
           </div>
         </div>

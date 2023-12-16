@@ -7,6 +7,8 @@ import DashboardPage from '../pages/DashboardPage';
 import BroadcastPage from '../pages/BroadcastPage';
 import NewbroadcastPage from '../pages/NewbroadcastPage';
 import ContactListPage from '../pages/ContactListPage';
+import TemplateListpage from '../pages/TemplateListpage';
+import AddtemplatePage from '../pages/AddtemplatePage';
 
 function SiderbarLayoutRouter() {
     const [subPathname, setSubpathName] = useState("");
@@ -24,6 +26,8 @@ function SiderbarLayoutRouter() {
             <Route path='/broadcast/schedule'  element={<BroadcastPage/>}/>
             <Route path='/broadcast/schedule/new-broadcast' element={<NewbroadcastPage/>} />
             <Route path='/contact/list' element={<ContactListPage/>} />
+            <Route path='/template/list' element={<TemplateListpage/>} />
+            <Route path='/template/list/new-template' element={<AddtemplatePage/>} />
            </Routes>
         </div>
       </div>

@@ -17,10 +17,10 @@
 .add-btn-bg-blue{
     display: flex;
     height: var(--spacingSystem-spacing-xxl, 28px);
-    padding: var(--spacingSystem-spacing-xxs, 4px) var(--spacingSystem-spacing-xs, 8px);
+   
     justify-content: center;
     align-items: center;
-    gap: var(--spacingSystem-spacing-none, 0px);
+   
     border-radius: var(--spacingSystem-radius-sm, 8px);
     background: var(--color-brand-primary, #176AF2);
     color: var(--color-text-text-inverse, #FFF);

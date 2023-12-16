@@ -52,3 +52,13 @@ border: 1px solid var(--color-border-primary-default, #176AF2);
     font-weight: 400;
     line-height: 120%; /* 16.8px */
 }
+.new-template-form-select-box{
+    display: flex;
+    padding: var(--spacingSystem-spacing-md, 16px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacingSystem-spacing-xxs, 4px);
+    align-self: stretch;
+    border-radius: var(--spacingSystem-radius-sm, 8px);
+    background: var(--color-background-bg, #FFF);
+}
