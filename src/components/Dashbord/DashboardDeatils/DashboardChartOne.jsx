@@ -65,7 +65,7 @@ function DashboardChartOne() {
     <div className="flex space-x-7 ">
       <div className="flex flex-grow w-full  ">
         {/* <Chart width={'100%'} height={'100%'} options={options} data={data} chartType="LineChart" /> */}
-       <ReactApexChart series={data.series} options={data.options} type="line" height={'400px'} width={'900px'}  />
+       <ReactApexChart series={data.series} options={data.options} type="line" height={'400px'} width={'700px'}  />
       </div>
       <div className="flex flex-col border-2 trafic-web-layout"></div>
     </div>
