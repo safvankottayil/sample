@@ -1,5 +1,6 @@
 .dashbord-scroll-bar::-webkit-scrollbar{
   width: 9px;
+  height: 0px;
   background-color: rgb(209, 205, 205);
   border-radius: 8px;
 }

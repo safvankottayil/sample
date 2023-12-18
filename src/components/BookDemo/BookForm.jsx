@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./bookdemo.css";
+import DropDown from "./DropDown";
+import { FormValidation } from "./validation";
 function BookForm() {
+  const [componySize,setComponySize]=useState('')
+  const [country,setCountry]=useState('')
+  const [language,setLanguage]=useState('')
+  const [demo,setDemo]=useState('')
+  const [demotime,setDemoTime]=useState('')
+  const [api,setApi]=useState('')
+  const [err,setErr]=useState({})
+  async function handleSubmit(e){
+    e.preventDefault()
+    const check=FormValidation({companysize:componySize,country,api,demo,demotime,language})
+    console.log(check);
+    setErr(check.err)
+  }
   return (
     <div className="w-1/2 flex justify-start  pt-10 font-inter">
       <div className="book-demo-form-border flex flex-col mb-14 w-[604px] p-7">
@@ -13,7 +28,7 @@ function BookForm() {
         </div>
         {/* form */}
         <form
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
           className="pt-9 flex flex-col"
         >
           {/* Company size */}
@@ -21,22 +36,18 @@ function BookForm() {
             <label htmlFor="Company size" className="book-demo-input-label">
               Company size
             </label>
-            <select className="book-demo-input-text mt-1 h-14 book-demo-input-border focus:outline-none p-3 ">
-              <option value="">Select</option>
-            </select>
-            <span className="h-3"></span>
-            <p className="pl-2 h-4 leading-4"></p>
+           <DropDown err={err?.companysize==false?true:false} data={['Select']} />
+            {/* <span className="h-3"></span> */}
+            <p className="pl-1 h-4 text-red-500 mb-2 pt-1 leading-4">{err?.companysize==false?'This field is required':''}</p>
           </div>
            {/* Country */}
            <div className="flex flex-grow flex-col">
-            <label htmlFor="Company size" className="book-demo-input-label">
+            <label htmlFor="Contry" className="book-demo-input-label">
             Country
             </label>
-            <select className="book-demo-input-text mt-1 h-14 book-demo-input-border focus:outline-none p-3 ">
-              <option value="">Select</option>
-            </select>
-            <span className="h-3"></span>
-            <p className="pl-2 h-4 leading-4"></p>
+            <DropDown err={err?.country==false?true:false} data={['Select']} />
+            
+            <p className="pl-1 h-4 text-red-500 mb-2 pt-1 leading-4">{err?.country==''?'This field is required':''}</p>
 
           </div>
 
@@ -45,11 +56,8 @@ function BookForm() {
             <label htmlFor="Company size" className="book-demo-input-label">
             Language
             </label>
-            <select className="book-demo-input-text mt-1  h-14 book-demo-input-border focus:outline-none p-3 ">
-              <option value="">Select</option>
-            </select>
-            <span className="h-3"></span>
-            <p className="pl-2 h-4 leading-4"></p>
+            <DropDown err={err?.language==false?true:false} data={['Select']} />
+            <p className="pl-1 h-4 text-red-500 mb-2 pt-1 leading-4">{err?.language==''?'This field is required':''}</p>
           </div>
           
             {/* What demo are you looking for? */}
@@ -57,34 +65,29 @@ function BookForm() {
             <label htmlFor="demo" className="book-demo-input-label">
             What demo are you looking for?
             </label>
-            <select className="book-demo-input-text mt-1  h-14  book-demo-input-border focus:outline-none p-3 ">
-              <option value="">Select</option>
-            </select>
-            <span className="h-3"></span> 
-            <p className="pl-2 h-4 leading-4"></p>
+            <DropDown err={err?.demo==false?true:false} data={['Select']} />
+            <p className="pl-1 h-4 text-red-500 mb-2 pt-1 leading-4">{err?.demo==''?'This field is required':''}</p>
           </div>
             {/* Preferred demo time */}
             <div className="flex flex-grow flex-col">
             <label htmlFor="demo" className="book-demo-input-label">
             Preferred demo time
             </label>
-            <select className="book-demo-input-text  h-14 book-demo-input-border mt-1 focus:outline-none p-3 ">
-              <option value="">Select</option>
-            </select>
-            <span className="h-3"></span>
-            <p className="pl-2 h-4 leading-4"></p>
+            <DropDown err={err?.demotime==false?true:false} data={['Select']} />
+            <p className="pl-1 h-4 text-red-500 mb-2 pt-1 leading-4">{err?.demotime==''?'This field is required':''}</p>
           </div>
           {/* radio buttons */}
           <div className="flex flex-col">
             <p className="radio-btn-top-text">Do you have WhatsApp API?</p>
             <div className="flex space-x-3">
-               <div className="flex space-x-2 justify-center items-center"><input name="W-app-api" type="radio" className="w-5 h-5" /> <span className="book-demo-input-text">Yes</span></div> 
-               <div className="flex space-x-2 justify-center items-center"><input name="W-app-api" type="radio" className="w-5 h-5" /> <span className="book-demo-input-text">No</span></div> 
+               <div className="flex space-x-2 justify-center items-center"><input onClick={()=>setApi('yes')} name="W-app-api" type="radio" className="w-5 h-5" /> <span className="book-demo-input-text">Yes</span></div> 
+               <div className="flex space-x-2 justify-center items-center"><input onClick={()=>setApi('No')} name="W-app-api" type="radio" className="w-5 h-5" /> <span className="book-demo-input-text">No</span></div> 
             </div>
+            <p className="pl-1 h-4 text-red-500 mb-2 pt-1 leading-4">{err?.api==''?'This field is required':''}</p>
           </div>
           {/* submit */}
           <div className="flex w-full pt-5">
-            <button  className="submit-btn flex w-full justify-center items-center">Submit</button>
+            <button onClick={handleSubmit}  className="submit-btn flex w-full justify-center items-center">Submit</button>
           </div>
         </form>
       </div>
