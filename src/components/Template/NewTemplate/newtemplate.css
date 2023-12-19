@@ -18,6 +18,10 @@
     border-radius: var(--spacingSystem-radius-sm, 8px);
     background: var(--color-background-bg, #FFF);
 }
+.preview{
+width:450px !important;
+    /* max-width: 300; */
+}
 .new-template-form-select-item{
     display: flex;
     height: 36px;

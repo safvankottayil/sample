@@ -8,6 +8,7 @@ import DeleteSvg from "../../Svgs/DeleteSvg";
 import Table from "./Table";
 import Pagination from "../../Pagination/Pagination";
 import { useNavigate } from "react-router-dom";
+import BoldDelete from "../../Svgs/BoldDelete";
 function Schedule() {
     const navigate=useNavigate()
   return (
@@ -29,7 +30,7 @@ function Schedule() {
             Open Documentation
           </div>
           <button onClick={()=>navigate('/broadcast/schedule/new-broadcast')} className="brocast-add-btn">
-            <AddBtnSvg /> New Broadcast
+            <AddBtnSvg /> <p className="pr-1">New Broadcast</p> 
           </button>
         </div>
       </div>
@@ -57,8 +58,8 @@ function Schedule() {
               <Export />
               <p className="font-abx font-sm font-normal">Export</p>
             </div>
-            <div className="pl-2">
-              <DeleteSvg />
+            <div className="pl-2 flex items-center pr-1">
+              <BoldDelete />
 
             </div>
           </div>

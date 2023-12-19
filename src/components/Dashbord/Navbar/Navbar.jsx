@@ -11,7 +11,7 @@ function Navbar() {
       {/* NAVIGATION PATH */}
       <div className="flex  items-center  font-abz justify-start">
         {pathname.map((item, index) => {
-          let data = item.split("%"),
+          let data = item.split("-"),
             Text = "";
           if (1 < data.length) {
             data.forEach((text, index) => {

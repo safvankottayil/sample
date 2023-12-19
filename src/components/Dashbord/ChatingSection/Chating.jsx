@@ -8,6 +8,7 @@ import ChatLinkSvg from "../../Svgs/ChatLinkSvg";
 import SmailSvg from "../../Svgs/SmailSvg";
 import VoiceSvg from "../../Svgs/VoiceSvg";
 import SendSvg from "../../Svgs/SendSvg";
+import DropDown from "../../FilterDropDown/DropDown";
 
 function Chating() {
     const ChatRef=useRef(null)
@@ -50,12 +51,7 @@ function Chating() {
         </div>
         {/* DropDown */}
         <div className="flex flex-grow justify-end">
-            <div className="flex flex-col relative">
-            <div className="relative dropdown flex justify-between ">
-                <p className="w-[128px]">Submit as</p>
-                <Arrowdown/>
-            </div>
-            </div>
+                     <DropDown data={['Submit as']}/>
            
         </div>
       </div>

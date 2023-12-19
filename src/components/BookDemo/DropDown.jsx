@@ -10,7 +10,7 @@ console.log(err);
   }, []);
   return (
     <div className={`book-demo-input-text ${ err?'book-demo-input-border-red':`book-demo-input-border`} mt-1 h-14 p-3  w-full relative`} >
-      <div className="flex w-full items-center h-full  justify-between">
+      <div  onClick={() => setShow(!show)} className="flex w-full items-center h-full  justify-between">
         <div className="flex space-y-1 flex-col">
           <p className=" text-base font-normal font-inter text-[#505050]">
             {select}

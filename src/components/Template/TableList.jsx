@@ -2,6 +2,8 @@ import React from "react";
 import CopySvg from "../Svgs/CopySvg";
 import EditSvg from "../Svgs/EditSvg";
 import DeleteSvg from "../Svgs/DeleteSvg";
+import BoldDelete from "../Svgs/BoldDelete";
+import BoldEdit from "../Svgs/BoldEdit";
 
 function TableList() {
   return (
@@ -35,8 +37,8 @@ function TableList() {
                 <td className="text-left w-[200px]  ">
                     <div className="flex  items-center space-x-4">
                         <CopySvg/>
-                        <EditSvg width={20} />
-                        <DeleteSvg width={20} />
+                        <BoldEdit width={20} />
+                        <BoldDelete width={20} />
                         <button className="bg-[#25D366] rounded-lg p-2">Submit</button>
                     </div>
                 </td>

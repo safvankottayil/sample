@@ -5,25 +5,7 @@ import TrafficByDevice from "./TrafficByDevice";
 import { DonutChart } from "./DonutChart";
 import DotSvg from "../../Svgs/DotSvg";
 function ChartSectionTwo() {
-  const options = {
-    series: [44, 55, 41, 17, 15],
-    chart: {
-      type: "donut",
-    },
-    responsive: [
-      {
-        breakpoint: 40,
-        options: {
-          chart: {
-            width: 200,
-          },
-          legend: {
-            position: "bottom",
-          },
-        },
-      },
-    ],
-  };
+ 
 
   return (
     <div className="flex flex-grow space-x-7 ">
@@ -32,7 +14,8 @@ function ChartSectionTwo() {
       </div>
       <div className="trafic-web-layout justify-center pie-chart chart">
         <div className="flex w-fit justify-between ">
-          <div className="flex items-center">
+          <div className="flex relative flex-col justify-center ">
+            <h1 className="text-black-int-14-600 absolute top-3 left-3  ">Traffic by Location</h1>
             <DonutChart
               data={[
                 { name: "Mark", value: 30 },

@@ -11,6 +11,7 @@ import TemplateListpage from "../pages/TemplateListpage";
 import AddtemplatePage from "../pages/AddtemplatePage";
 import Auto_ChatbotPage from "../pages/Auto_ChatbotPage";
 import RightDashboardDeatials from "../components/Dashbord/RightDashboardDeatials/RightDashboardDeatials";
+import NewflowPage from "../pages/NewflowPage";
 
 function SiderbarLayoutRouter() {
   const location = useLocation();
@@ -44,6 +45,7 @@ function SiderbarLayoutRouter() {
                   path="/automations/chatbot"
                   element={<Auto_ChatbotPage />}
                 />
+                <Route path="/automations/chatbot/new-flow" element={<NewflowPage/>} />
               </Routes>
             </div>
           </div>

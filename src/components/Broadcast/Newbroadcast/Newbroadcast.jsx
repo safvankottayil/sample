@@ -12,11 +12,11 @@ function Newbroadcast() {
       {/* Edit section */}
       <div className="new-broadcast-form-card ">
         <div className="flex flex-col space-y-4 flex-grow w-full">
-          <BoradcastDropDown text={"Broadcast name"} data={["Free Trial"]} />
+          <BoradcastDropDown text={"Broadcast name"} data={['Select',"Free Trial"]} />
 
           <BoradcastDropDown
             text={"Select template message"}
-            data={["Free trial broadcast"]}
+            data={['Select',"Free trial broadcast"]}
           />
         </div>
 
@@ -26,25 +26,25 @@ function Newbroadcast() {
           <h1 className="text-black-int-14">Contact</h1>
           <div className="grid grid-cols-3 gap-3 w-full">
             <div className="col-span-1">
-              <BoradcastDropDown data={["Country"]} text={"Attribute"} />
+              <BoradcastDropDown data={['Select',"Country"]} text={"Attribute"} />
             </div>
             <div className="col-span-1">
-              <BoradcastDropDown data={["Include"]} text={"Operation"} />
+              <BoradcastDropDown data={['Select',"Include"]} text={"Operation"} />
             </div>
             <div className="col-span-1">
-              <BoradcastDropDown data={["Bahrain"]} text={"Value"} />
+              <BoradcastDropDown data={['Select',"Bahrain"]} text={"Value"} />
             </div>
           </div>
           {/* ----------- */}
           <div className="grid grid-cols-3 gap-3 w-full">
             <div className="col-span-1">
-              <BoradcastDropDown data={["Country"]} text={"Attribute"} />
+              <BoradcastDropDown data={['Select',"Country"]} text={"Attribute"} />
             </div>
             <div className="col-span-1">
-              <BoradcastDropDown data={["Include"]} text={"Operation"} />
+              <BoradcastDropDown data={['Select',"Include"]} text={"Operation"} />
             </div>
             <div className="col-span-1">
-              <BoradcastDropDown data={["Bahrain"]} text={"Value"} />
+              <BoradcastDropDown data={['Select',"Bahrain"]} text={"Value"} />
             </div>
           </div>
           {/* ------------------ */}

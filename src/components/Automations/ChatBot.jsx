@@ -20,7 +20,7 @@ function ChatBot() {
                     <BorderText_Blue text={'Open Documentation'} key={''}/>
                 </div>
                 <div className='flex'>
-                    <Plusbgblue icon={<Automations width={21} height={20} Active={'white'} />} text={'New Flow'} />
+                    <Plusbgblue url={'/automations/chatbot/new-flow'} icon={<Automations width={21} height={20} Active={'white'} />} text={'New Flow'} />
                 </div>
             </div>
         </div>

@@ -104,7 +104,8 @@ function NewTemplate() {
             onBlur={() => setTextActive("")}
             ref={BodyRef}
             contentEditable="true"
-            className="new-broadcast-form-select-box w-full flex felx-col focus:outline-none min-h-[80px]"
+
+            className="new-broadcast-form-select-box overflow-hidden  flex max-w-[740px] felx-col focus:outline-none min-h-[80px]"
           ></div>
           {/*  */}
           <div className="flex justify-between w-full">
@@ -126,7 +127,7 @@ function NewTemplate() {
           {/* text */}
         </div>
         {/* --------------------------------------------------------------- */}
-        <div className="my-2 h-[1px] w-full bg-[#E1E1E1]"></div>
+        <div className="my-2 h-[1px] w-full overflow-hidden bg-[#E1E1E1]"></div>
         {/* ----------------Footer--------------- */}
         <div className="flex flex-col w-full ">
           {/* head */}
@@ -193,18 +194,18 @@ function NewTemplate() {
         </div>
       </div>
       {/* --------------preview-------- */}
-      <div className="flex w-4/12 ">
-        <div className="new-template-form w-full h-fit">
+      <div className="flex w-4/12  ">
+        <div className="new-template-form preview w-full h-fit">
           <h1>Preview</h1>
           <div className="new-broadcast-form-select-box min-h-16">
-            <img src={image ? URL.createObjectURL(image) : ""} alt="" />
+          {image?<img className="w-full max-h-32" src={image ? URL.createObjectURL(image) : ""} alt="" />:""}
             <div
               dangerouslySetInnerHTML={{ __html: bodytext }}
-              className="flex flex-col overflow-hidden py-2"
+              className="flex w-[380px] flex-col overflow-hidden py-2"
             ></div>
             <div
               dangerouslySetInnerHTML={{ __html: footerText }}
-              className="flex flex-col  py-2"
+              className="flex w-[380px] flex-col  py-2"
             ></div>
           </div>
           {Button?.type ? (

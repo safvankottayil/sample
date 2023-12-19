@@ -10,7 +10,7 @@ function NewTemplateDropDown({text,data,value,setvalue,type,placeholder}) {
     },[])
   return (
     <div className="new-template-form-select-box w-full relative ">
-      <div className="flex w-full items-center justify-between">
+      <div onClick={()=>setShow(!show)} className="flex w-full items-center justify-between">
         <div className="flex space-y-1 flex-col">
          {text?<p className="text-gray-abz-12">{text}</p>:""}
          {type!='input'? <p className="text-black-abz-14">{select}</p>:<>

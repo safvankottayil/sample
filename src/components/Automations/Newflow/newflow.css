@@ -1,0 +1,62 @@
+.right-sidebar{
+    display: flex;
+     width: 303px;
+     padding: var(--spacingSystem-spacing-sm, 12px);
+     flex-direction: column;
+     align-items: flex-start;
+     gap: var(--spacingSystem-spacing-lg, 20px);
+     flex-shrink: 0;
+}
+.new-flow-msg{
+    display: flex;
+    min-width: 160px;
+    padding: var(--spacingSystem-spacing-md, 16px) var(--spacingSystem-spacing-sm, 12px);
+    flex-direction: column;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: var(--spacingSystem-radius-sm, 8px);
+    background: var(--Color-Secondary-S100, #81E5A6);
+}
+.new-flow-qes{
+    display: flex;
+    min-width: 160px;
+    padding: var(--spacingSystem-spacing-md, 16px) var(--spacingSystem-spacing-sm, 12px);
+   flex-direction: column;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: var(--spacingSystem-radius-sm, 8px);
+    background: var(--color-warning-W100, #FFBA6B);
+}
+.new-flow-con{
+   display: flex;
+   flex-direction: column;
+    min-width: 160px;
+    padding: var(--spacingSystem-spacing-md, 16px) var(--spacingSystem-spacing-sm, 12px);
+    /* align-items: center; */
+    gap: 8px;
+    align-self: stretch;
+    border-radius: var(--spacingSystem-radius-sm, 8px);
+    background: var(--Color-Primary-P100, #78A9F7);
+}
+.new-flow-adv-item{
+    display: flex;
+    min-width: 135.5px;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacingSystem-spacing-sm, 12px);
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    border-radius: var(--spacingSystem-radius-sm, 8px);
+   border: var(--spacing-0, 1px) solid var(--color-primary-P100, #78A9F7);
+}
+.new-flow-top-input{
+    display: flex;
+    padding: var(--spacingSystem-spacing-xs, 8px);
+    align-items: center;
+    gap: var(--spacingSystem-spacing-xs, 8px);
+    align-self: stretch;
+    border-radius: var(--spacingSystem-radius-sm, 8px);
+    border: var(--spacing-0, 1px) solid var(--color-border-border-subtle, #C6C6C6);
+    background: var(--color-background-bg, #FFF);
+}

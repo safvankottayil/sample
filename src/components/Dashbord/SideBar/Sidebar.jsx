@@ -15,6 +15,7 @@ import Team from "../../Svgs/TeamSvg";
 import SettingsSvg from "../../Svgs/SettingsSvg";
 import HiglightSvg from "../../Svgs/HiglightSvg";
 import { motion } from "framer-motion";
+import DotSvg from "../../Svgs/DotSvg";
 const SidebarItems = [
   {
     item: "dashboard",
@@ -109,12 +110,11 @@ function Sidebar({}) {
   const navigate = useNavigate();
   let path = location.pathname.split("/");
   useEffect(() => {
-   
     setAvtive(path[1]);
     if (path[2]) {
       setSubActive(path[2]);
-    }else{
-      setSubActive('')
+    } else {
+      setSubActive("");
     }
   }, []);
   return (
@@ -123,14 +123,7 @@ function Sidebar({}) {
         show ? "w-[213px]" : "w-20"
       } transition-all duration-500 h-screen overflow-hidden font-inter relative`}
     >
-      <div
-        onClick={() => setshow(!show)}
-        className={`absolute ${
-          show ? "hidden" : " -right-4  rotate-180"
-        } arow-bg top-4 py-2`}
-      >
-        <LeftArow width={17} />
-      </div>
+   
       <div
         className={`${
           show ? "w-[213px] " : "w-20 "
@@ -151,7 +144,7 @@ function Sidebar({}) {
               <LeftArow width={17} />
             </p>
           </div>
-          <div className="flex  justify-center items-center pb-10">
+          <div className={`flex ${show?'':"justify-center"} space-x-1 items-center pb-10`}>
             <Logo height={37} width={29} />
             {show ? <OsappSvg width={75} height={23} /> : ""}
           </div>
@@ -174,12 +167,12 @@ function Sidebar({}) {
                     onMouseLeave={() => setHover("")}
                     className={` cursor-pointer ${
                       active == items.item
-                        ? "sidebar-nav-item-active"
+                        ? show? "sidebar-nav-item-active":'pt-1'
                         : "sidebar-nav-item"
-                    } ${show ? "" : "justify-center mx-auto"} `}
+                    } ${show ? "" : " flex justify-center mx-auto relative"} `}
                   >
                     {active == items.item
-                      ? items.activeIcon
+                      ? show?items.activeIcon:items.HoverIcon
                       : isHover == items.item
                       ? items.HoverIcon
                       : items.Icon}
@@ -198,6 +191,12 @@ function Sidebar({}) {
                     ) : (
                       ""
                     )}
+                    {show&&active!='chat'&&items.item=='chat'?<>
+                    <p className="flex flex-grow justify-end  items-center space-x-1">
+                      <p><DotSvg fill={'#176AF2'} /></p><p className="text-[#176AF2]">12</p>
+                    </p>
+                    </>:""}
+                    {show==false? active==items.item?<p className="flex absolute -right-4 top-[14px] items-center" ><DotSvg fill={'#176AF2'} /></p>:'':''}
                   </motion.p>
 
                   {active == items.item ? (
@@ -208,7 +207,7 @@ function Sidebar({}) {
                       transition={{ type: "spring", stiffness: 100 }}
                       className={`${
                         items.subitem[0] ? "h-fit" : "h-0"
-                      } sidebar-sub-box overflow-hidden`}
+                      } sidebar-sub-box overflow-hidden `}
                     >
                       {show ? (
                         <>
@@ -226,16 +225,23 @@ function Sidebar({}) {
                                   navigate(path);
                                 }}
                                 className={`sidebar-sub-item cursor-pointer hover:text-[#176AF2] ${
-                                  item?.item.toLowerCase() == subActive &&path[1]==items.item
+                                  item?.item.toLowerCase() == subActive &&
+                                  path[1] == items.item
                                     ? "sidebar-sub-item-active"
                                     : ""
                                 }`}
                               >
-                                {item?.item.toLowerCase() == subActive && path[1]==items.item ? <HiglightSvg /> : ""}
+                                {item?.item.toLowerCase() == subActive &&
+                                path[1] == items.item ? (
+                                  <HiglightSvg />
+                                ) : (
+                                  ""
+                                )}
                                 <div></div>
                                 <p
                                   className={` ${
-                                    item?.item.toLowerCase() == subActive && path[1]==items.item
+                                    item?.item.toLowerCase() == subActive &&
+                                    path[1] == items.item
                                       ? "sidebar-sub-item-text-active"
                                       : "sidebar-sub-item-text"
                                   }  hover:text-[#176AF2]`}

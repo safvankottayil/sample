@@ -9,7 +9,7 @@ function DashboardTopDeatials() {
          <h1 className='text-black-int-14-600'>Views</h1>
          <div className='flex justify-between w-full items-center'>
             <h1 className='text-inter text-[25px] leading-[30px] font-semibold'>753K</h1>
-            <p className='flex'>
+            <p className='flex items-center space-x-1'>
                 <p>+11.01%</p>
                 <ProgressIcon/>
             </p>

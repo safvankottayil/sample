@@ -14,6 +14,7 @@ import DeleteSvg from "../../Svgs/DeleteSvg";
 import Table from "./Table";
 import Pagination from "../../Pagination/Pagination";
 import { useNavigate } from "react-router-dom";
+import BoldDelete from "../../Svgs/BoldDelete";
 const item = [
   { item: "Send", count: 200, icon: <SendSvg /> },
   { item: "Delivered", count: 195, icon: <DowloadSvg/> },
@@ -45,8 +46,8 @@ function History() {
           <div className="history-head-border-text-blue font-abz">
             Open Documentation
           </div>
-          <button onClick={()=>navigate('/broadcast/schedule/new-broadcast')} className="brocast-add-btn">
-            <AddBtnSvg /> New Broadcast
+          <button onClick={()=>navigate('/broadcast/schedule/new-broadcast')} className="brocast-add-btn ">
+            <AddBtnSvg /> <p className="pr-2">New Broadcast</p>
           </button>
         </div>
       </div>
@@ -95,7 +96,7 @@ function History() {
                     <p className="font-abx font-sm font-normal">Export</p>
 
                 </div>
-                <div className="pl-2"><DeleteSvg/></div>
+                <div className="pl-2 flex items-center pr-1"><BoldDelete/></div>
             </div>
         </div>
         

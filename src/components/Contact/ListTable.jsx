@@ -1,6 +1,7 @@
 import React from 'react'
 import EditSvg from '../Svgs/EditSvg';
 import DeleteSvg from '../Svgs/DeleteSvg';
+import TableDownArrow from '../Svgs/TableDownArrow';
 
 function ListTable() {
   return (
@@ -8,7 +9,7 @@ function ListTable() {
     <thead>
       <tr className="table-thead">
         <th className="text-left"><input type="checkbox" /></th>
-        <th className="text-left">Name</th>
+        <th className="text-left"> <p className='flex items-center space-x-2'><TableDownArrow/><p>Name</p></p></th>
         <th className="text-left">Phone Number</th>
         <th className="text-left">Address</th>
         <th className="text-left">Birthday</th>

@@ -8,6 +8,8 @@ import Export from "../Svgs/Export";
 import ImportSvg from "../Svgs/ImportSvg";
 import ListTable from "./ListTable";
 import Pagination from "../Pagination/Pagination";
+import EditSvg from "../Svgs/EditSvg";
+import BoldDelete from "../Svgs/BoldDelete";
 function List() {
   const [isempty, setEmpty] = useState(false);
   return (
@@ -61,7 +63,7 @@ function List() {
                   <p>Export</p>
                 </button>
                 <button>
-                  <DeleteSvg />
+                  <BoldDelete />
                 </button>
               </div>
             </div>
