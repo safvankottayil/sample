@@ -9,7 +9,7 @@ export default function CostumNodeMessage({ id, data }) {
     <div className="node-box ">
       {/* head */}
       <div className="node-head  node-bg-green relative w-full">
-        <Handle  type="target" position={Position.Left} id={id} />
+        <Handle type="target" position={Position.Left} id={id} />
         <div className="flex items-center space-x-2">
           <SendMessage />
           <p className="font-inter text-black text-base font-medium">
@@ -25,21 +25,27 @@ export default function CostumNodeMessage({ id, data }) {
       {/* body */}
       <div className="node-body">
         <div className=" space-y-2 w-full">
-          <p className=" items-center w-full relative node-message text-black-abz-14">
-            {data.message}
-          </p>
+          {data.message ? (
+            <p className=" items-center w-full relative node-message text-black-abz-14">
+              {data.message}
+            </p>
+          ) : (
+            ""
+          )}
           <div className="">
-            {data?.buttons
-              ? data.buttons.map((item) => {
-                  return (
-                    <>
-                      <button className=" mx-1 mt-2 float-left relative font-abz node-msg-btn text-black-abz-14">
-                        {item}
-                      </button>
-                    </>
-                  );
-                })
-              : ""}
+            <button className=" mx-1 mt-2 float-left relative font-abz node-msg-btn text-black-abz-14">
+              Message
+            </button>
+            <button className=" mx-1 mt-2 float-left relative font-abz node-msg-btn text-black-abz-14">
+              Video
+            </button>
+
+            <button className=" mx-1 mt-2 float-left relative font-abz node-msg-btn text-black-abz-14">
+              Image
+            </button>
+            <button className=" mx-1 mt-2 float-left relative font-abz node-msg-btn text-black-abz-14">
+              Document
+            </button>
           </div>
         </div>
       </div>

@@ -26,6 +26,11 @@
     border-top-right-radius: var(--spacingSystem-radius-sm, 8px);
     background: var(--color-secondary-S100, #81E5A6);
 }
+.node-bg-blue{
+    border-top-left-radius:var(--spacingSystem-radius-sm, 8px);
+    border-top-right-radius: var(--spacingSystem-radius-sm, 8px);
+    background: var(--Color-Primary-P100, #78A9F7);
+}
 .node-body{
     display: flex;
     padding: var(--spacingSystem-spacing-sm, 12px);
@@ -72,4 +77,15 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%; /* 16.8px */
+}
+
+.modal-input{
+    display: flex;
+padding: 10px 24px;
+align-items: center;
+gap: 4px;
+align-self: stretch;
+border-radius: 12px;
+border: var(--spacing-0, 1px) solid var(--Primary-Gray50, #C2C2C2);
+background: var(--Primary-Gray10, #FFF);
 }

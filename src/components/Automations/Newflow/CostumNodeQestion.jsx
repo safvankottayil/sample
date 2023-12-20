@@ -3,7 +3,11 @@ import "./customnode.css";
 import BoldEdit from "../../Svgs/BoldEdit";
 import QestionSvg from "../../Svgs/Newflow/QestionSvg";
 import { Handle, Position } from "reactflow";
+import { useDispatch, useSelector } from "react-redux";
+import {setNewflowModal} from '../../../Redux/Client'
 function CostumNodeQestion({ id, data }) {
+  const dispatch=useDispatch()
+  const {NewFlowData}=useSelector((state)=>state.Client)
   return (
     <div className="node-box ">
       {/* head */}
@@ -20,7 +24,7 @@ function CostumNodeQestion({ id, data }) {
       </div>
       {/*  */}
       {/* body */}
-      <div className="node-body">
+      <div onClick={()=>dispatch(setNewflowModal(id))} className="node-body">
         <div className=" space-y-2">
           <p className="text-black-abz-14">{data.label}</p>
           <div className="flex flex-col space-y-2">

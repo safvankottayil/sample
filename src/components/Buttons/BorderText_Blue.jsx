@@ -3,9 +3,9 @@ import './button.css'
 import { Link } from 'react-router-dom'
 function BorderText_Blue({text,url,icon}) {
   return (
-    <Link to={url?url:''} className="border-text-blue  cursor-pointer font-abz">
+    <Link to={url?url:''} className="border-text-blue  flex items-center cursor-pointer font-abz">
            {icon? icon:""}
-         <p className=''>{text}</p> 
+         <p className='pt-[2px]'>{text}</p> 
           </Link>
   )
 }

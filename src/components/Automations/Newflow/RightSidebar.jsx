@@ -6,25 +6,34 @@ import Agent from "../../Svgs/Newflow/Agent";
 import UpdateStatus from "../../Svgs/Newflow/UpdateStatus";
 import TemplateSvg from "../../Svgs/Newflow/TemplateSvg";
 import TimeDelay from "../../Svgs/Newflow/TimeDelay";
+// import {setNewflowModal}  from '../../../Redux/Client'
+import { useDispatch, useSelector } from "react-redux";
+import {setNewFlowData,setNewflowModal} from '../../../Redux/Client'
 function RightSidebar({ nodes, setNodes }) {
+  const {NewFlowData} =useSelector((state)=>state.Client)
+  console.log(NewFlowData,'arr');
+  const dispach=useDispatch()
   return (
     <div className="right-sidebar border-l p-4">
       {/* 3 conditions */}
       <div className="flex flex-col space-y-3">
         <div
-          onClick={() =>
-            setNodes([
-              ...nodes,
-              {
-                id:nodes.length+'',
-                position: { x:nodes.length * 40 + 10, y:nodes.length * 40 + 10, },
+          onClick={() =>{
+            // dispach(setNewflowModal(true))
+            dispach(setNewFlowData([
+            ...NewFlowData,              {
+                id: NewFlowData.length + "",
+                position: {
+                  x: NewFlowData.length * 40 + 10,
+                  y: NewFlowData.length * 40 + 10,
+                },
                 type: "message",
                 data: {
-                  message: "Hey there!😄",
-                  buttons: ["Message", "Video", "Image", "Document"],
-                },
+                  message: "",
+                  },
               },
-            ])
+            ]))
+          }
           }
           className="new-flow-msg "
         >
@@ -36,21 +45,21 @@ function RightSidebar({ nodes, setNodes }) {
         </div>
         <div
           onClick={() =>
-            setNodes([
-              ...nodes,
+            dispach(setNewFlowData([
+              ...NewFlowData,
               {
-                id: nodes.length + "",
+                id: NewFlowData.length + "",
                 position: {
-                  x: nodes.length * 40 + 10,
-                  y: nodes.length * 40 + 10,
+                  x: NewFlowData.length * 40 + 10,
+                  y: NewFlowData.length * 40 + 10,
                 },
                 type: "question",
                 data: {
-                  label: "Hey this is FutureX. How can I help you today?",
-                  options: ["Enroll in a course", "Pay Fee"],
+                  label: "",
+                  options: [],
                 },
               },
-            ])
+            ]))
           }
           className="new-flow-qes"
         >
@@ -59,7 +68,25 @@ function RightSidebar({ nodes, setNodes }) {
             Get an input from the user and store it in a variable.
           </p>
         </div>
-        <div className="new-flow-con">
+        <div
+          onClick={() =>
+            dispach(setNewFlowData([...
+              NewFlowData,
+              {
+                id: NewFlowData.length + "",
+                position: {
+                  x: NewFlowData.length * 40 + 10,
+                  y: NewFlowData.length * 40 + 10,
+                },
+                type: "condition",
+                data: {
+                 label:''
+                },
+              },
+            ]))
+          }
+          className="new-flow-con"
+        >
           <h1 className="text-black-int-14-600">Condition</h1>
           <p className="text-black-abz-12">
             Use logical conditions to determine what messages to send.

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "-": "^0.0.1",
+    "@reduxjs/toolkit": "^2.0.1",
     "apexcharts": "^3.45.0",
     "browserify": "^17.0.0",
     "chart.js": "^4.4.1",
@@ -24,8 +25,10 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-phone-number-input": "^3.1.42",
+    "react-redux": "^9.0.4",
     "react-router-dom": "^6.20.1",
     "reactflow": "^11.10.1",
+    "redux-persist": "^6.0.0",
     "save": "^2.9.0"
   },
   "devDependencies": {
