@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const ClientAuth=createSlice({
     name:'Client',
     initialState:{
-     NewFlowData:[],   
+     NewFlowData:[],
+     NewFlowEdge:[]  , 
        NewflowModal:false,
           
     },
@@ -10,11 +12,14 @@ const ClientAuth=createSlice({
         setNewflowModal:function(state,action){
             state.NewflowModal=action.payload
         },
+        setNewflowEdge:function(state,action){
+            state.NewFlowEdge=action.payload
+        },
         setNewFlowData:function(state,action){
             state.NewFlowData=action.payload
         }
     }
 })
 
-export const {setNewflowModal,setNewFlowData}=ClientAuth.actions
+export const {setNewflowModal,setNewFlowData,setNewflowEdge}=ClientAuth.actions
 export const Clientreducer=ClientAuth.reducer

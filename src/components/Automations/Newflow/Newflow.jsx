@@ -19,82 +19,88 @@ const nodeTypes = {
   condition: CustomNodeCondition,
 };
 import "reactflow/dist/style.css";
-const initialNodes = [
-  {
-    id: "1",
-    position: { x: 40, y: 40 },
-    type: "question",
-    data: {
-      label: "Hey this is FutureX. How can I help you today?",
-      options: ["Enroll in a course", "Pay Fee"],
-    },
-  },
-  {
-    id: "2",
-    position: { x: 500, y: 400 },
-    type: "message",
-    data: {
-      message: "Hey there!😄",
-      buttons: ["Message", "Video", "Image", "Document"],
-    },
-  },
-];
-import { setNewFlowData, setNewflowModal } from "../../../Redux/Client";
+
+import { setNewFlowData, setNewflowModal,setNewflowEdge} from "../../../Redux/Client";
 function Newflow() {
   const dispatch = useDispatch();
-  const { NewflowModal, NewFlowData } = useSelector((state) => state.Client);
+  const { NewflowModal, NewFlowData,NewFlowEdge } = useSelector((state) => state.Client);
   const [modalShow, setModalShow] = useState(false);
   const edgeUpdateSuccessful = useRef(true);
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(NewFlowEdge?NewFlowData:[]);
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
   const onEdgeUpdateStart = useCallback(() => {
     edgeUpdateSuccessful.current = false;
+    // updateNodeINRedux()
   }, []);
   const onEdgeUpdate = useCallback((oldEdge, newConnection) => {
     edgeUpdateSuccessful.current = true;
     setEdges((els) => updateEdge(oldEdge, newConnection, els));
+    // updateNodeINRedux()
   }, []);
-  const onEdgeUpdateEnd = useCallback((_, edge) => {
+  const onEdgeUpdateEnd = (_, edge) => {
     if (!edgeUpdateSuccessful.current) {
       setEdges((eds) => eds.filter((e) => e.id !== edge.id));
     }
+    dispatch(setNewflowEdge(edges))
     edgeUpdateSuccessful.current = true;
-  }, []);
-
+    
+  }
+  console.log(NewFlowEdge,'22222222222222');
   useEffect(() => {
     if (NewFlowData) {
       setNodes(NewFlowData);
     }
-  }, [NewFlowData?.length]);
+  }, [NewFlowData]);
+useEffect(()=>{
+  // if(NewFlowEdge){
+    // if(NewFlowEdge){
+      // dispatch(setNewflowEdge(NewFlowEdge))
+      setEdges(NewFlowEdge)
+    // }
+  // }
+},[])
+console.log(edges);
   useEffect(() => {
-    if (NewFlowData.length == nodes.length) {
-      dispatch(setNewFlowData(nodes));
-    }
-  }, [nodes]);
+   
+   
+    // if(NewFlowEdge.length==edges.length-1){
+    //   setEdges(
+    //     edges.map((item) => {
+    //       return {
+    //         ...item,
+    //         animated: true,
+    //         markerEnd: {
+    //           type: MarkerType.Arrow,
+    //           width: 20,
+    //           height: 20,
+    //         },
+    //         style: {
+    //           strokeWidth: 2,
+    //         },
+    //       };
+    //     })
+    //   );
+      dispatch(setNewflowEdge(edges))
+    // }
+ 
+   
+  }, [edges]);
+ 
+  function updateNodeINRedux(){
+    dispatch(setNewFlowData(nodes))
+  }
 
-  useEffect(() => {
-    setEdges(
-      edges.map((item) => {
-        return {
-          ...item,
-          animated: true,
-          markerEnd: {
-            type: MarkerType.Arrow,
-            width: 20,
-            height: 20,
-          },
-          style: {
-            strokeWidth: 2,
-          },
-        };
-      })
-    );
-  }, [edges.length]);
-
+  // function debounce(fn, delay) {
+  //   let timer
+  //   return function () {
+  //     clearTimeout(timer)
+  //     timer = setTimeout(()=>fn(), delay)
+  //   }
+  // }
   return (
     <>
       {NewflowModal ? <Modal /> : ""}
@@ -103,8 +109,14 @@ function Newflow() {
           onEdgeUpdateStart={onEdgeUpdateStart}
           onEdgeUpdate={onEdgeUpdate}
           onEdgeUpdateEnd={onEdgeUpdateEnd}
+          // onDragEnd={(e)=>console.log(e)}
+          // onDragExit={}
+          // onDragOver={(e)=>console.log(1)}
+          onDragStart={()=>console.log(2)}
           nodes={nodes}
           edges={edges}
+          
+          onNodeDragStop={updateNodeINRedux}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
