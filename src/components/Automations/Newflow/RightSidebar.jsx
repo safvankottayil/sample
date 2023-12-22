@@ -7,12 +7,12 @@ import UpdateStatus from "../../Svgs/Newflow/UpdateStatus";
 import TemplateSvg from "../../Svgs/Newflow/TemplateSvg";
 import TimeDelay from "../../Svgs/Newflow/TimeDelay";
 // import {setNewflowModal}  from '../../../Redux/Client'
-import { useDispatch, useSelector } from "react-redux";
-import {setNewFlowData,setNewflowModal} from '../../../Redux/Client'
-function RightSidebar({ nodes, setNodes }) {
-  const {NewFlowData} =useSelector((state)=>state.Client)
-  console.log(NewFlowData,'arr');
-  const dispach=useDispatch()
+// import { useDispatch, useSelector } from "react-redux";
+// import {setNewFlowData,setquestionModal} from '../../../Redux/Client'
+function RightSidebar({ Node,SetNode}) {
+  // const {NewFlowData} =useSelector((state)=>state.Client)
+  // console.log(NewFlowData,'arr');
+  // const dispach=useDispatch()
   return (
     <div className="right-sidebar border-l p-4">
       {/* 3 conditions */}
@@ -20,19 +20,19 @@ function RightSidebar({ nodes, setNodes }) {
         <div
           onClick={() =>{
             // dispach(setNewflowModal(true))
-            dispach(setNewFlowData([
-            ...NewFlowData,              {
-                id: NewFlowData.length + "",
+          SetNode([
+            ...Node,              {
+                id: Node.length + "",
                 position: {
-                  x: NewFlowData.length * 40 + 10,
-                  y: NewFlowData.length * 40 + 10,
+                  x: Node.length * 40 + 10,
+                  y: Node.length * 40 + 10,
                 },
                 type: "message",
                 data: {
                   message: "",
                   },
               },
-            ]))
+            ])
           }
           }
           className="new-flow-msg "
@@ -45,13 +45,13 @@ function RightSidebar({ nodes, setNodes }) {
         </div>
         <div
           onClick={() =>
-            dispach(setNewFlowData([
-              ...NewFlowData,
+            SetNode([
+              ...Node,
               {
-                id: NewFlowData.length + "",
+                id: Node.length + "",
                 position: {
-                  x: NewFlowData.length * 40 + 10,
-                  y: NewFlowData.length * 40 + 10,
+                  x: Node.length * 40 + 10,
+                  y: Node.length * 40 + 10,
                 },
                 type: "question",
                 data: {
@@ -59,7 +59,7 @@ function RightSidebar({ nodes, setNodes }) {
                   options: [],
                 },
               },
-            ]))
+            ])
           }
           className="new-flow-qes"
         >
@@ -70,20 +70,20 @@ function RightSidebar({ nodes, setNodes }) {
         </div>
         <div
           onClick={() =>
-            dispach(setNewFlowData([...
-              NewFlowData,
+            SetNode([...
+              Node,
               {
-                id: NewFlowData.length + "",
+                id: Node.length + "",
                 position: {
-                  x: NewFlowData.length * 40 + 10,
-                  y: NewFlowData.length * 40 + 10,
+                  x: Node.length * 40 + 10,
+                  y: Node.length * 40 + 10,
                 },
                 type: "condition",
                 data: {
                  label:''
                 },
               },
-            ]))
+            ])
           }
           className="new-flow-con"
         >

@@ -4,7 +4,7 @@ import BoldEdit from "../../Svgs/BoldEdit";
 import QestionSvg from "../../Svgs/Newflow/QestionSvg";
 import { Handle, Position } from "reactflow";
 import { useDispatch, useSelector } from "react-redux";
-import { setNewflowModal } from "../../../Redux/Client";
+import { setquestionModal } from "../../../Redux/Client";
 function CostumNodeQestion({ id, data }) {
   const dispatch = useDispatch();
   const { NewFlowData } = useSelector((state) => state.Client);
@@ -29,7 +29,7 @@ function CostumNodeQestion({ id, data }) {
       </div>
       {/*  */}
       {/* body */}
-      <div onClick={() => dispatch(setNewflowModal(id))} className="node-body">
+      <div onClick={() => dispatch(setquestionModal(id))} className="node-body">
         <div className=" space-y-1 w-full">
           {data?.question?.map((item) => {
             return item.children.map((item2) => {

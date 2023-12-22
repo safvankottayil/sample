@@ -20,14 +20,14 @@ const nodeTypes = {
 };
 import "reactflow/dist/style.css";
 
-import { setNewFlowData, setNewflowModal,setNewflowEdge} from "../../../Redux/Client";
-function Newflow() {
+// import { setNewFlowData,setNewflowEdge} from "../../../Redux/Client";
+import ConditionModal from "./ConditionModal";
+function Newflow({nodes, setNodes, onNodesChange,edges, setEdges, onEdgesChange}) {
   const dispatch = useDispatch();
-  const { NewflowModal, NewFlowData,NewFlowEdge } = useSelector((state) => state.Client);
-  const [modalShow, setModalShow] = useState(false);
+  const { questionModal,conditionModal } = useSelector((state) => state.Client);
+
   const edgeUpdateSuccessful = useRef(true);
-  const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(NewFlowEdge?NewFlowData:[]);
+
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
@@ -45,54 +45,54 @@ function Newflow() {
     if (!edgeUpdateSuccessful.current) {
       setEdges((eds) => eds.filter((e) => e.id !== edge.id));
     }
-    dispatch(setNewflowEdge(edges))
+    // dispatch(setNewflowEdge(edges))
     edgeUpdateSuccessful.current = true;
     
   }
-  console.log(NewFlowEdge,'22222222222222');
-  useEffect(() => {
-    if (NewFlowData) {
-      setNodes(NewFlowData);
-    }
-  }, [NewFlowData]);
-useEffect(()=>{
-  // if(NewFlowEdge){
-    // if(NewFlowEdge){
-      // dispatch(setNewflowEdge(NewFlowEdge))
-      setEdges(NewFlowEdge)
-    // }
-  // }
-},[])
-console.log(edges);
+  // console.log(NewFlowEdge,'22222222222222');
+  // useEffect(() => {
+  //   if (NewFlowData) {
+  //     setNodes(NewFlowData);
+  //   }
+  // }, [NewFlowData]);
+// useEffect(()=>{
+//   // if(NewFlowEdge){
+//     // if(NewFlowEdge){
+//       // dispatch(setNewflowEdge(NewFlowEdge))
+//       setEdges(NewFlowEdge)
+//     // }
+//   // }
+// },[])
+console.log(nodes);
   useEffect(() => {
    
    
     // if(NewFlowEdge.length==edges.length-1){
-    //   setEdges(
-    //     edges.map((item) => {
-    //       return {
-    //         ...item,
-    //         animated: true,
-    //         markerEnd: {
-    //           type: MarkerType.Arrow,
-    //           width: 20,
-    //           height: 20,
-    //         },
-    //         style: {
-    //           strokeWidth: 2,
-    //         },
-    //       };
-    //     })
-    //   );
-      dispatch(setNewflowEdge(edges))
+      setEdges(
+        edges.map((item) => {
+          return {
+            ...item,
+            animated: true,
+            markerEnd: {
+              type: MarkerType.Arrow,
+              width: 20,
+              height: 20,
+            },
+            style: {
+              strokeWidth: 2,
+            },
+          };
+        })
+      );
+      // dispatch(setNewflowEdge(edges))
     // }
  
    
-  }, [edges]);
+  }, [edges.length]);
  
-  function updateNodeINRedux(){
-    dispatch(setNewFlowData(nodes))
-  }
+  // function updateNodeINRedux(){
+  //   dispatch(setNewFlowData(nodes))
+  // }
 
   // function debounce(fn, delay) {
   //   let timer
@@ -103,7 +103,8 @@ console.log(edges);
   // }
   return (
     <>
-      {NewflowModal ? <Modal /> : ""}
+      {questionModal? <Modal nodes={nodes} setNodes={setNodes} /> : ""}
+      {conditionModal?<ConditionModal nodes={nodes} setNodes={setNodes}/>:''}
       <div className="flex flex-grow ">
         <ReactFlow
           onEdgeUpdateStart={onEdgeUpdateStart}
@@ -116,7 +117,7 @@ console.log(edges);
           nodes={nodes}
           edges={edges}
           
-          onNodeDragStop={updateNodeINRedux}
+          // onNodeDragStop={updateNodeINRedux}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}

@@ -5,12 +5,15 @@ const ClientAuth=createSlice({
     initialState:{
      NewFlowData:[],
      NewFlowEdge:[]  , 
-       NewflowModal:false,
-          
+       questionModal:false,
+       conditionModal:false  
     },
     reducers:{
-        setNewflowModal:function(state,action){
-            state.NewflowModal=action.payload
+        setquestionModal:function(state,action){
+            state.questionModal=action.payload
+        },
+        setconditionModal:function(state,action){
+            state.conditionModal=action.payload
         },
         setNewflowEdge:function(state,action){
             state.NewFlowEdge=action.payload
@@ -21,5 +24,5 @@ const ClientAuth=createSlice({
     }
 })
 
-export const {setNewflowModal,setNewFlowData,setNewflowEdge}=ClientAuth.actions
+export const {setconditionModal,setquestionModal,setNewFlowData,setNewflowEdge}=ClientAuth.actions
 export const Clientreducer=ClientAuth.reducer

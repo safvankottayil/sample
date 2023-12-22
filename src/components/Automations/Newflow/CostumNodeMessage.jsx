@@ -14,6 +14,7 @@ import AudioSvg from "../../Svgs/Newflow/AudioSvg";
 import AudioInput from "./AudioInput";
 import Document from "../../Svgs/Newflow/Document";
 import DocumentInput from "./DocumentInput";
+import DeleteSvg from "../../Svgs/DeleteSvg";
 export default function CostumNodeMessage({ id, data }) {
   const [EditorText, setEditText] = useState([
     { children: [{ text: "somthing wrong" }] },
@@ -25,7 +26,12 @@ export default function CostumNodeMessage({ id, data }) {
     <div className="node-box ">
       {/* head */}
       <div className="node-head  node-bg-green relative w-full">
-        <Handle type="target" position={Position.Left} id={id} />
+        <Handle
+          className="bg-transparent"
+          type="target"
+          position={Position.Left}
+          id={id}
+        />
         <div className="flex items-center space-x-2">
           <SendMessage />
           <p className="font-inter text-black text-base font-medium">
@@ -35,8 +41,14 @@ export default function CostumNodeMessage({ id, data }) {
         <div>
           <BoldEdit />
         </div>
-        <Handle type="source" position={Position.Right} id={id} />
+        <Handle
+          style={{ background: "#B9B9B9", width: "10px", height: "10px" }}
+          type="source"
+          position={Position.Right}
+          id={id}
+        />
       </div>
+
       {/*  */}
       {/* body */}
       <div className="node-body">
@@ -55,12 +67,24 @@ export default function CostumNodeMessage({ id, data }) {
               {items.map((value) => {
                 if (value.type == "image") {
                   return (
-                    <div className="flex flex-col space-y-2 py-1">
+                    <div className="flex relative  flex-col space-y-2 py-1">
+                       <div  onClick={() =>
+                              setItems(
+                                items.filter((item) => {
+                                  return item.id !== value.id;
+                                })
+                              )
+                            } className="absolute z-40 bg-white rounded-full ring-1 ring-slate-400 ring-opacity-40 p-[3px] -right-2 top-2 shadow-black">
+                            <DeleteSvg />
+                          </div>
                       {value.file ? (
-                        <img
-                          src={URL.createObjectURL(value.file)}
-                          className="w-full h-32"
-                        />
+                        <div className="flex w-full relative">
+                          <img
+                            src={URL.createObjectURL(value.file)}
+                            className="w-full h-32"
+                          />
+                         
+                        </div>
                       ) : (
                         <div className="flex items-center justify-center py-5 bg-slate-100 mb-1 rounded-md">
                           <ImageSvg />
@@ -76,14 +100,29 @@ export default function CostumNodeMessage({ id, data }) {
                   );
                 } else if (value.type == "video") {
                   return (
-                    <div className="space-y-2">
+                    <div className="space-y-2 relative">
+                         <div
+                            onClick={() =>
+                              setItems(
+                                items.filter((item) => {
+                                  return item.id !== value.id;
+                                })
+                              )
+                            }
+                            className="absolute rounded-full ring-1 bg-white z-50 ring-slate-400 ring-opacity-40 p-[3px] -right-2 top-2 shadow-black"
+                          >
+                            <DeleteSvg />
+                          </div>
                       {value.file ? (
-                        <ReactPlayer
-                          controls
-                          width={"100%"}
-                          height={"100px"}
-                          url={URL.createObjectURL(value.file)}
-                        />
+                        <div className="flex relative w-full">
+                          <ReactPlayer
+                            controls
+                            width={"100%"}
+                            height={"100px"}
+                            url={URL.createObjectURL(value.file)}
+                          />
+                       
+                        </div>
                       ) : (
                         <div className="flex items-center justify-center py-5 bg-slate-100 mb-1 rounded-md">
                           <VideoSvg />
@@ -97,15 +136,29 @@ export default function CostumNodeMessage({ id, data }) {
                       />
                     </div>
                   );
-                }
-                else if (value.type == "audio"){
+                } else if (value.type == "audio") {
                   return (
-                    <div className="space-y-2">
+                    <div className="space-y-2 relative">
+                       <div  onClick={() =>
+                              setItems(
+                                items.filter((item) => {
+                                  return item.id !== value.id;
+                                })
+                              )
+                            } className="absolute rounded-full ring-1 z-50 bg-white ring-slate-400 ring-opacity-40 p-[3px] -right-2 top-1 shadow-black">
+                            <DeleteSvg />
+                          </div>
                       {value.file ? (
-                       <audio className="w-full" controls>
-                       <source src={URL.createObjectURL(value.file)} type="audio/mp3" />
-                       Your browser does not support the audio tag.
-                     </audio>
+                        <div>
+                          <audio className="w-full" controls>
+                            <source
+                              src={URL.createObjectURL(value.file)}
+                              type="audio/mp3"
+                            />
+                            Your browser does not support the audio tag.
+                          </audio>
+                         
+                        </div>
                       ) : (
                         <div className="flex items-center justify-center py-5 bg-slate-100 mb-1 rounded-md">
                           <AudioSvg />
@@ -119,20 +172,32 @@ export default function CostumNodeMessage({ id, data }) {
                       />
                     </div>
                   );
-                }
-                else if (value.type == "document"){
+                } else if (value.type == "document") {
                   return (
                     <div className="space-y-2">
                       {/* {value.file ? ( */}
-                  
-                  
-                     
-                        <div className="flex flex-col items-center justify-center py-5 bg-slate-100 mb-1 rounded-md">
-                          <div></div>
-                          <Document />
-                          <p className="text-xs text-center pt-3 text-blue-500">{value.file?value.file.name:""}</p>
-                        </div>
-                      
+
+                      <div className="flex relative flex-col items-center justify-center py-5 bg-slate-100 mb-1 rounded-md">
+                        <div></div>
+                        <Document />
+                        <p className="text-xs text-center pt-3 text-blue-500">
+                          {value.file ? value.file.name : ""}
+                        </p>
+                        <div
+                            onClick={() =>
+                              setItems(
+                                items.filter((item) => {
+                                  return item.id !== value.id;
+                                })
+                              )
+                            }
+                            className="absolute rounded-full z-50 bg-white ring-1 ring-slate-400 ring-opacity-40 p-[3px] -right-2 -top-2 shadow-black"
+                          >
+                            <DeleteSvg />
+                          </div>
+                        
+                      </div>
+
                       <DocumentInput
                         items={items}
                         value={value}

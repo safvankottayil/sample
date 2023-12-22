@@ -1,23 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { setNewFlowData, setNewflowModal } from "../../../Redux/Client";
+import { setNewFlowData, setquestionModal } from "../../../Redux/Client";
 import Editer from "../../Editer2/Editer2";
 import "./customnode.css";
 import AddSvg from "../../Svgs/Newflow/AddSvg";
 import DeleteSvg from "../../Svgs/DeleteSvg";
-export default function Modal() {
+export default function Modal({nodes,setNodes}) {
   const dispatch = useDispatch();
-  // dispatch(setNewFlowData([]));
-  // dispatch(setNewflowModal(false))
-  const { NewFlowData, NewflowModal } = useSelector((state) => state.Client);
+ 
+  const { questionModal } = useSelector((state) => state.Client);
   // console.log(NewFlowData);
-  const data =NewFlowData?NewFlowData.filter((item) => item.id == NewflowModal):[]
-  console.log(data[0].data);
+  const data =nodes?nodes.filter((item) => item.id == questionModal):[]
+  console.log(data[0]?.data);
   const [answer, setAnswer] = useState(data[0]?.data?.answers?data[0].data.answers:[]);
   const AnswerRef = useRef(null);
   const currectAnswerRef = useRef(null);
-  const [EditorText, setEditText] = useState(data[0]?data[0]?.data?.question:[]);
+  const [EditorText, setEditText] = useState(data[0]?data[0]?.data?.question:[{children:[{text:"ds"}]}]);
   const [update, setUpdate] = useState(0);
 
   useEffect(() => {
@@ -32,10 +31,10 @@ export default function Modal() {
       answer: currectAnswerRef.current.value,
     };
     console.log(data);
-    let allData = JSON.parse(JSON.stringify(NewFlowData));
+    let allData = JSON.parse(JSON.stringify(nodes));
      console.log(item[0]);
     let newData = allData.map((item2) => {
-      if (item2.id == NewflowModal) {
+      if (item2.id == questionModal) {
         return item[0];
       } else {
         return item2;
@@ -43,8 +42,8 @@ export default function Modal() {
     });
     newData = JSON.parse(JSON.stringify(newData));
     console.log(newData, "-------------------------");
-    dispatch(setNewFlowData(newData));
-    dispatch(setNewflowModal(false))
+    setNodes(newData)
+    dispatch(setquestionModal(false))
   }
   return (
     <div className="flex fixed w-full top-0 left-0 z-50 justify-center items-center h-screen bg-black bg-opacity-40">
@@ -52,7 +51,7 @@ export default function Modal() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="flex w-[500px] max-h-[80vh] overflow-y-auto dashbord-scroll-bar bg-white rounded-lg min-h-96"
+        className="flex w-[400px] max-h-[80vh] overflow-y-auto dashbord-scroll-bar bg-white rounded-lg min-h-96"
       >
         <div className="flex flex-col w-full p-6">
           <div className="flex items-start border-b">
@@ -150,7 +149,7 @@ export default function Modal() {
             </div>
             <div className="py-2 flex justify-end space-x-3">
               <button
-                onClick={() => dispatch(setNewflowModal(false))}
+                onClick={() => dispatch(setquestionModal(false))}
                 className="px-4 py-2  rounded-md border-2 border-blue-500 text-blue-500 flex items-center justify-center"
               >
                 <p>Cancel</p>

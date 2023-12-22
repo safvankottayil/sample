@@ -85,7 +85,7 @@ padding: 10px 24px;
 align-items: center;
 gap: 4px;
 align-self: stretch;
-border-radius: 12px;
+border-radius: 8px;
 border: var(--spacing-0, 1px) solid var(--Primary-Gray50, #C2C2C2);
 background: var(--Primary-Gray10, #FFF);
 }

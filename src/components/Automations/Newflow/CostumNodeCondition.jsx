@@ -3,8 +3,10 @@ import "./customnode.css";
 import BoldEdit from "../../Svgs/BoldEdit";
 import { Handle, Position } from "reactflow";
 import QestionSvg from "../../Svgs/Newflow/QestionSvg";
-
+import { setconditionModal } from "../../../Redux/Client";
+import { useDispatch } from "react-redux";
 function CostumNodeCondition({data,id}) {
+  const dispatch=useDispatch()
   return (
     <div className="node-box ">
     {/* head */}
@@ -25,11 +27,11 @@ function CostumNodeCondition({data,id}) {
   
     {/*  */}
     {/* body */}
-    <div className="node-body">
+    <div onClick={()=>dispatch(setconditionModal(id))} className="node-body">
       <div className=" space-y-2">
-        <p className="text-black-abz-14">{data.label}</p>
-        <div className="flex flex-col space-y-2">
-          
+        <p className="text-black-abz-14">This is condition Content</p>
+        <div className="flex flex-col ">
+      
         </div>
       </div>
     </div>
