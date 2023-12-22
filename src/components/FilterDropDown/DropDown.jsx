@@ -3,7 +3,7 @@ import Arrowdown from "../Svgs/Arrowdown";
 
 function DropDown({ data, setvalue, H ,value}) {
   const [show, setShow] = useState(false);
-  const [item, setItem] = useState(value?value:data?'':'');
+  const [item, setItem] = useState(value?value:data?data[0]:'');
  useEffect(() => {
   if(value)
  setItem(value)

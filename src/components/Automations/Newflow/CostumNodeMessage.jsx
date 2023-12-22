@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./customnode.css";
 import ReactPlayer from "react-player/lazy";
 import BoldEdit from "../../Svgs/BoldEdit";
@@ -15,13 +15,19 @@ import AudioInput from "./AudioInput";
 import Document from "../../Svgs/Newflow/Document";
 import DocumentInput from "./DocumentInput";
 import DeleteSvg from "../../Svgs/DeleteSvg";
+import { setCopyNode, setDeleteNode, setSendMessage } from "../../../Redux/Client";
+import { useDispatch } from "react-redux";
+import CopySvg from "../../Svgs/CopySvg";
 export default function CostumNodeMessage({ id, data }) {
+  const dispatch=useDispatch()
   const [EditorText, setEditText] = useState([
     { children: [{ text: "somthing wrong" }] },
   ]);
   const [show, setShow] = useState(false);
-  const [items, setItems] = useState([]);
-  console.log(items, "-img");
+  const [items, setItems] = useState(data?data[0]?.id?data:[]:[]);
+useEffect(()=>{
+ dispatch(setSendMessage({id,data:items}))
+},[items])
   return (
     <div className="node-box ">
       {/* head */}
@@ -32,14 +38,20 @@ export default function CostumNodeMessage({ id, data }) {
           position={Position.Left}
           id={id}
         />
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center ">
           <SendMessage />
-          <p className="font-inter text-black text-base font-medium">
+          <p className="font-inter pl-1 text-black text-base font-medium">
             Send a message
           </p>
         </div>
-        <div>
-          <BoldEdit />
+        <div className="flex items-center space-x-1">
+          {/* <BoldEdit /> */}
+          <div onClick={()=>dispatch(setDeleteNode(id))}>
+              <DeleteSvg/>
+          </div>
+          <div onClick={()=>dispatch(setCopyNode(id))}>
+            <CopySvg/>
+          </div>
         </div>
         <Handle
           style={{ background: "#B9B9B9", width: "10px", height: "10px" }}

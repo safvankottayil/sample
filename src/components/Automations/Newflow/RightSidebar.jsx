@@ -22,7 +22,7 @@ function RightSidebar({ Node,SetNode}) {
             // dispach(setNewflowModal(true))
           SetNode([
             ...Node,              {
-                id: Node.length + "",
+                id: Date.now()+'',
                 position: {
                   x: Node.length * 40 + 10,
                   y: Node.length * 40 + 10,
@@ -48,7 +48,7 @@ function RightSidebar({ Node,SetNode}) {
             SetNode([
               ...Node,
               {
-                id: Node.length + "",
+                id: Date.now()+'',
                 position: {
                   x: Node.length * 40 + 10,
                   y: Node.length * 40 + 10,
@@ -73,7 +73,7 @@ function RightSidebar({ Node,SetNode}) {
             SetNode([...
               Node,
               {
-                id: Node.length + "",
+                id: Date.now()+'',
                 position: {
                   x: Node.length * 40 + 10,
                   y: Node.length * 40 + 10,

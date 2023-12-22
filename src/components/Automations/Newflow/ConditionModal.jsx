@@ -5,6 +5,7 @@ import DropDown from "../../FilterDropDown/DropDown";
 import { useDispatch, useSelector } from "react-redux";
 import { setconditionModal } from "../../../Redux/Client";
 import VariableDropDown from "./VariableDropDown";
+import QestionSvg from "../../Svgs/Newflow/QestionSvg";
 // import { dispatch } from "d3";
 
 function ConditionModal({ nodes, setNodes }) {
@@ -94,11 +95,17 @@ function ConditionModal({ nodes, setNodes }) {
           <label htmlFor="ifcondition">Set the condition(s)</label>
           <div className="flex flex-col space-y-4">
             <div className="flex flex-grow relative space-x-2 w-full">
+              <div className="flex absolute space-x-1 top-[10px] left-3">
+                <QestionSvg/><p className="font-semibold"> IF</p>
+              </div>
               <input
+              placeholder=""
                 value={condition1}
                 onChange={(e) => setCondition1(e.target.value)}
                 type="text"
-                className=" w-full modal-input focus:outline"
+
+                style={{padding:'8px 0px 8px 60px',margin:"0px"}}
+                className=" w-full modal-input  focus:outline"
               />
               <button
                 onClick={() => setVariableBtn(1)}
@@ -192,10 +199,15 @@ function ConditionModal({ nodes, setNodes }) {
           <div className="flex flex-col w-full py-4">
             <div className="flex flex-col space-y-4">
               <div className="flex flex-grow relative space-x-2 w-full">
+              <div className="flex absolute space-x-1 top-[10px] left-3">
+                <QestionSvg/><p className="font-semibold"> IF</p>
+              </div>
                 <input
                   value={condition3}
                   onChange={(e) => setCondition3(e.target.value)}
                   type="text"
+                  placeholder="Type of select a variable"
+                  style={{padding:'8px 0px 8px 60px',margin:"0px"}}
                   className=" w-full modal-input focus:outline"
                 />
                 <button
@@ -226,6 +238,7 @@ function ConditionModal({ nodes, setNodes }) {
                   value={condition4}
                   onChange={(e) => setCondition4(e.target.value)}
                   type="text"
+                  placeholder="Type a value"
                   className=" w-full modal-input focus:outline"
                 />
                 <button

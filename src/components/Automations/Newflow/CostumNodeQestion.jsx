@@ -4,7 +4,9 @@ import BoldEdit from "../../Svgs/BoldEdit";
 import QestionSvg from "../../Svgs/Newflow/QestionSvg";
 import { Handle, Position } from "reactflow";
 import { useDispatch, useSelector } from "react-redux";
-import { setquestionModal } from "../../../Redux/Client";
+import { setquestionModal,setDeleteNode,setCopyNode } from "../../../Redux/Client";
+import DeleteSvg from "../../Svgs/DeleteSvg";
+import CopySvg from "../../Svgs/CopySvg";
 function CostumNodeQestion({ id, data }) {
   const dispatch = useDispatch();
   const { NewFlowData } = useSelector((state) => state.Client);
@@ -23,8 +25,15 @@ function CostumNodeQestion({ id, data }) {
             Question
           </p>
         </div>
-        <div>
-          <BoldEdit />
+        <div className="flex items-center space-x-2">
+          <div onClick={() => dispatch(setquestionModal(id))}> <BoldEdit /></div>
+         
+          <div onClick={()=>dispatch(setDeleteNode(id))}>
+          <DeleteSvg/>
+          </div>
+          <div onClick={()=>dispatch(setCopyNode(id))}>
+            <CopySvg/>
+          </div>
         </div>
       </div>
       {/*  */}

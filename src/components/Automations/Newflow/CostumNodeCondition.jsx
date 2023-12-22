@@ -3,8 +3,10 @@ import "./customnode.css";
 import BoldEdit from "../../Svgs/BoldEdit";
 import { Handle, Position } from "reactflow";
 import QestionSvg from "../../Svgs/Newflow/QestionSvg";
-import { setconditionModal } from "../../../Redux/Client";
+import { setCopyNode, setDeleteNode, setconditionModal } from "../../../Redux/Client";
 import { useDispatch } from "react-redux";
+import DeleteSvg from "../../Svgs/DeleteSvg";
+import CopySvg from "../../Svgs/CopySvg";
 function CostumNodeCondition({data,id}) {
   const dispatch=useDispatch()
   return (
@@ -19,8 +21,14 @@ function CostumNodeCondition({data,id}) {
         Condition
         </p>
       </div>
-      <div>
+      <div className="flex items-center space-x-2">
         <BoldEdit />
+        <div onClick={()=>dispatch(setDeleteNode(id))}>
+          <DeleteSvg/>
+        </div>
+        <div onClick={()=>dispatch(setCopyNode(id))}>
+            <CopySvg/>
+          </div>
       </div>
       <Handle  type="source" position={Position.Right} id={id} />
     </div>
