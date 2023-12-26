@@ -18,7 +18,7 @@ function CostumNodeQestion({ id, data }) {
     <div className="node-box ">
       {/* head */}
       <div className="node-head relative  node-bg-orenge w-full">
-        <Handle type="target" position={Position.Left} id={id} />
+        <Handle className="h-[10px] w-[10px] bg-orange-300 " type="target" position={Position.Left} id={id} />
         <div className="flex items-center space-x-2">
           <QestionSvg />
           <p className="font-inter text-black text-base font-medium">
@@ -35,6 +35,7 @@ function CostumNodeQestion({ id, data }) {
             <CopySvg/>
           </div>
         </div>
+        <Handle className="h-[10px] w-[10px] bg-orange-300 " type="source" position={Position.Right} id={id} />
       </div>
       {/*  */}
       {/* body */}
@@ -60,12 +61,13 @@ function CostumNodeQestion({ id, data }) {
 
           <div className="flex flex-col space-y-2">
             {data?.answers
-              ? data.answers.map((item) => {
+              ? data.answers.map((item,i) => {
                   return (
                     <>
                       <button className=" relative node-qes-btn text-black-abz-14 w-full">
                         {item}
                         <Handle
+                        className="h-[10px] w-[10px] bg-orange-300"
                           type="source"
                           position={Position.Right}
                           id={item}

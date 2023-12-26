@@ -33,7 +33,7 @@ useEffect(()=>{
       {/* head */}
       <div className="node-head  node-bg-green relative w-full">
         <Handle
-          className="bg-transparent"
+         className="h-[10px] w-[10px] bg-emerald-300"
           type="target"
           position={Position.Left}
           id={id}
@@ -54,7 +54,8 @@ useEffect(()=>{
           </div>
         </div>
         <Handle
-          style={{ background: "#B9B9B9", width: "10px", height: "10px" }}
+        className="h-[10px] w-[10px] bg-emerald-300"
+          // style={{ background: "#B9B9B9", width: "10px", height: "10px" }}
           type="source"
           position={Position.Right}
           id={id}

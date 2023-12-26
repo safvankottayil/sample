@@ -6,24 +6,34 @@ import Editer from "../../Editer2/Editer2";
 import "./customnode.css";
 import AddSvg from "../../Svgs/Newflow/AddSvg";
 import DeleteSvg from "../../Svgs/DeleteSvg";
-export default function Modal({nodes,setNodes}) {
+export default function Modal({ nodes, setNodes }) {
   const dispatch = useDispatch();
- 
+
   const { questionModal } = useSelector((state) => state.Client);
   // console.log(NewFlowData);
-  const data =nodes?nodes.filter((item) => item.id == questionModal):[]
+  const data = nodes ? nodes.filter((item) => item.id == questionModal) : [];
   console.log(data[0]?.data);
-  const [answer, setAnswer] = useState(data[0]?.data?.answers?data[0].data.answers:[]);
+  const [answer, setAnswer] = useState(
+    data[0]?.data?.answers ? data[0].data.answers : []
+  );
   const AnswerRef = useRef(null);
   const currectAnswerRef = useRef(null);
-  const [EditorText, setEditText] = useState(data[0]?data[0]?.data?.question:[{children:[{text:"ds"}]}]);
+  const [EditorText, setEditText] = useState(
+    data[0] ? data[0]?.data?.question : [{ children: [{ text: "ds" }] }]
+  );
   const [update, setUpdate] = useState(0);
+  const [answerErr, setAnswerErr] = useState({isSubmit:true});
 
   useEffect(() => {
-    currectAnswerRef.current.value=data[0]?.data?.answer?data[0]?.data?.answer:''
+    currectAnswerRef.current.value = data[0]?.data?.answer
+      ? data[0]?.data?.answer
+      : "";
   }, []);
-  useEffect(()=>{EditorText})
+  useEffect(() => {
+    EditorText;
+  });
   function handleSubmit() {
+    // alert()
     let item = JSON.parse(JSON.stringify(data));
     item[0].data = {
       question: EditorText,
@@ -32,7 +42,7 @@ export default function Modal({nodes,setNodes}) {
     };
     console.log(data);
     let allData = JSON.parse(JSON.stringify(nodes));
-     console.log(item[0]);
+    console.log(item[0]);
     let newData = allData.map((item2) => {
       if (item2.id == questionModal) {
         return item[0];
@@ -42,8 +52,8 @@ export default function Modal({nodes,setNodes}) {
     });
     newData = JSON.parse(JSON.stringify(newData));
     console.log(newData, "-------------------------");
-    setNodes(newData)
-    dispatch(setquestionModal(false))
+    setNodes(newData);
+    dispatch(setquestionModal(false));
   }
   return (
     <div className="flex fixed w-full top-0 left-0 z-50 justify-center items-center h-screen bg-black bg-opacity-40">
@@ -72,13 +82,13 @@ export default function Modal({nodes,setNodes}) {
           {/* Answers */}
           <div className="flex flex-col">
             <h1 className="text-black-abz-14 pt-4 pb-1">Answer Options</h1>
-            <div className="flex flex-col space-y-3">
+            <div className="flex flex-col ">
               {answer.map((item, i) => {
                 return (
                   <>
-                    <div className="flex justify-between relative w-full">
+                    <div className="flex justify-between pt-4 relative w-full">
                       <input
-                        onChange={(e) =>
+                        onChange={(e) => {
                           setAnswer(
                             answer.map((item2, index) => {
                               if (item == item2 && i == index) {
@@ -87,8 +97,14 @@ export default function Modal({nodes,setNodes}) {
                                 return item2;
                               }
                             })
-                          )
-                        }
+                          ),
+                            setAnswerErr({
+                              ...answerErr,
+                              showAnswer: answer.includes(e.target.value)
+                                ? { text: "This value already exist", index: i }
+                                : "",isSubmit:answer.includes(e.target.value)?false:true
+                            });
+                        }}
                         Value={item}
                         className="modal-input w-full flex justify-between"
                       />
@@ -105,11 +121,17 @@ export default function Modal({nodes,setNodes}) {
                             })
                           );
                         }}
-                        className="absolute right-3 top-3"
+                        className="absolute right-3 top-7"
                       >
                         <DeleteSvg />
                       </div>
                     </div>
+                    <p className="text-red-500 text-sm font-abz">
+                      {answerErr?.showAnswer?.text &&
+                      answerErr?.showAnswer?.index == i
+                        ? answerErr?.showAnswer?.text
+                        : ""}
+                    </p>
                   </>
                 );
               })}
@@ -123,20 +145,32 @@ export default function Modal({nodes,setNodes}) {
             </label>
             <input
               ref={AnswerRef}
+              onChange={() =>
+                setAnswerErr({...answerErr,
+                  answer: answer.includes(AnswerRef.current.value)
+                    ? "this value already exist "
+                    : "",
+                })
+              }
               type="text"
               className="modal-input w-full focus:outline-none"
             />
             <div
               onClick={() => {
                 AnswerRef.current.value
-                  ? setAnswer([...answer, AnswerRef.current.value])
-                  : "",
-                  (AnswerRef.current.value = "");
+                  ? answerErr.answer == ""
+                    ? setAnswer([...answer, AnswerRef.current.value])
+                    : ""
+                  : setAnswerErr({...answerErr,answer: "This field is required" }),
+                  answerErr.answer == "" ? (AnswerRef.current.value = "") : "";
               }}
               className="flex absolute right-4 z-10 bg-white top-12"
             >
               <AddSvg />
             </div>
+            <p className="text-red-400 text-sm font-abz">
+              {answerErr?.answer ? answerErr.answer : ""}
+            </p>
             <div className="flex flex-col">
               <h1 className="pb-1 text-black-abz-14 pt-4">
                 Save Answers in a variable
@@ -156,7 +190,7 @@ export default function Modal({nodes,setNodes}) {
               </button>
               <button
                 onClick={() => {
-                  setUpdate(update + 1), handleSubmit();
+                  answerErr.isSubmit?handleSubmit():alert(1)
                 }}
                 className=" px-4 py-2 bg-blue-500 text-white rounded-md flex items-center justify-center"
               >
