@@ -12,10 +12,14 @@ const ClientAuth = createSlice({
     HoverEdge:'',
     questionModal: false,
     conditionModal: false,
+    customNodesModal:false,
   },
   reducers: {
     setHoverEdge:function(state,action){
             state.HoverEdge=action.payload
+    },
+    setCustomNodesModal:function(state,action){
+            state.customNodesModal=action.payload
     },
     setDeleteEdge: function (state, action) {
         state.DeleteEdge = action.payload;
@@ -52,6 +56,7 @@ export const {
   setquestionModal,
   setNewFlowData,
   setNewflowEdge,
-  setHoverEdge,setDeleteEdge
+  setHoverEdge,setDeleteEdge,
+  setCustomNodesModal
 } = ClientAuth.actions;
 export const Clientreducer = ClientAuth.reducer;

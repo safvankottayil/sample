@@ -12,7 +12,7 @@ function ChatUserDeatials() {
   const [contact, setcontact] = useState([["Name", "Edgar Huel"]]);
   return (
     <div className="flex chat-user-info overflow-y-auto chat-search-scroll-bar relative border-l">
-      <div className="absolute h-fit w-full px-6 py-3 flex flex-col">
+      <div className="absolute  h-fit w-full px-6 py-3 flex flex-col">
         {/*   USER-STATUS-AND NAME-PHOTO   */}
         <div className="flex">
           <img src="/avatar.png" alt="" />
@@ -24,7 +24,7 @@ function ChatUserDeatials() {
               style={{ color: "#1A9447", fontWeight: 400 }}
               className="flex items-center text-xs font-abz "
             >
-              <DotSvg /> <span className="pl-2">Available</span>
+              <DotSvg fill={'#1A9447'} /> <span className="pl-2">Available</span>
             </p>
           </div>
         </div>

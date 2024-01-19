@@ -45,7 +45,7 @@ function Chating() {
               style={{ color: "#1A9447", fontWeight: 400 }}
               className="flex items-center text-xs font-abz "
             >
-              <DotSvg /> <span className="pl-2">Available</span>
+              <DotSvg fill={'#1A9447'} /> <span className="pl-2">Available</span>
             </p>
           </div>
         </div>

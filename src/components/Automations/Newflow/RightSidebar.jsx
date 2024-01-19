@@ -6,23 +6,19 @@ import Agent from "../../Svgs/Newflow/Agent";
 import UpdateStatus from "../../Svgs/Newflow/UpdateStatus";
 import TemplateSvg from "../../Svgs/Newflow/TemplateSvg";
 import TimeDelay from "../../Svgs/Newflow/TimeDelay";
-// import {setNewflowModal}  from '../../../Redux/Client'
-// import { useDispatch, useSelector } from "react-redux";
-// import {setNewFlowData,setquestionModal} from '../../../Redux/Client'
-function RightSidebar({ Node,SetNode}) {
-  // const {NewFlowData} =useSelector((state)=>state.Client)
-  // console.log(NewFlowData,'arr');
-  // const dispach=useDispatch()
+
+function RightSidebar({ Node, SetNode }) {
   return (
     <div className="right-sidebar border-l p-4">
       {/* 3 conditions */}
       <div className="flex flex-col space-y-3">
         <div
-          onClick={() =>{
+          onClick={() => {
             // dispach(setNewflowModal(true))
-          SetNode([
-            ...Node,              {
-                id: Date.now()+'',
+            SetNode([
+              ...Node,
+              {
+                id: Date.now() + "",
                 position: {
                   x: Node.length * 40 + 10,
                   y: Node.length * 40 + 10,
@@ -30,11 +26,10 @@ function RightSidebar({ Node,SetNode}) {
                 type: "message",
                 data: {
                   message: "",
-                  },
+                },
               },
-            ])
-          }
-          }
+            ]);
+          }}
           className="new-flow-msg "
         >
           <h1 className="text-black-int-14-600">Message</h1>
@@ -48,7 +43,7 @@ function RightSidebar({ Node,SetNode}) {
             SetNode([
               ...Node,
               {
-                id: Date.now()+'',
+                id: Date.now() + "",
                 position: {
                   x: Node.length * 40 + 10,
                   y: Node.length * 40 + 10,
@@ -70,17 +65,17 @@ function RightSidebar({ Node,SetNode}) {
         </div>
         <div
           onClick={() =>
-            SetNode([...
-              Node,
+            SetNode([
+              ...Node,
               {
-                id: Date.now()+'',
+                id: Date.now() + "",
                 position: {
                   x: Node.length * 40 + 10,
                   y: Node.length * 40 + 10,
                 },
                 type: "condition",
                 data: {
-                 label:''
+                  label: "",
                 },
               },
             ])
@@ -97,27 +92,138 @@ function RightSidebar({ Node,SetNode}) {
       <div className="flex flex-col items-start space-y-3">
         <h1 className="text-black-int-16-600">Advanced</h1>
         <div className="grid grid-cols-2 gap-2">
-          <div className="new-flow-adv-item">
+          <div
+            onClick={() =>
+              SetNode([
+                ...Node,
+                {
+                  id: Date.now() + "",
+                  position: {
+                    x: Node.length * 40 + 10,
+                    y: Node.length * 40 + 10,
+                  },
+                  type: "custom",
+
+                  data: {
+                    type: "updateAttribute",
+                  },
+                },
+              ])
+            }
+            className="new-flow-adv-item"
+          >
             <Update />
             <p className="text-black-abz-12">Update Attribute</p>
           </div>
-          <div className="new-flow-adv-item">
+          <div
+            onClick={() =>
+              SetNode([
+                ...Node,
+                {
+                  id: Date.now() + "",
+                  position: {
+                    x: Node.length * 40 + 10,
+                    y: Node.length * 40 + 10,
+                  },
+                  type: "custom",
+
+                  data: {
+                    type: "updateTag",
+                  },
+                },
+              ])
+            }
+            className="new-flow-adv-item"
+          >
             <UpdateTag />
             <p className="text-black-abz-12">Update Tag</p>
+            {/* ----------------------- */}
           </div>
-          <div className="new-flow-adv-item">
+          <div
+            onClick={() =>
+              SetNode([
+                ...Node,
+                {
+                  id: Date.now() + "",
+                  position: {
+                    x: Node.length * 40 + 10,
+                    y: Node.length * 40 + 10,
+                  },
+                  type: "custom",
+
+                  data: {
+                    type: "assignAgent",
+                  },
+                },
+              ])
+            }
+            className="new-flow-adv-item"
+          >
             <Agent />
             <p className="text-black-abz-12">Assign Agent</p>
           </div>
-          <div className="new-flow-adv-item">
+          {/* --------------------------------- */}
+          <div
+            onClick={() =>
+              SetNode([
+                ...Node,
+                {
+                  id: Date.now() + "",
+                  position: {
+                    x: Node.length * 40 + 10,
+                    y: Node.length * 40 + 10,
+                  },
+                  type: "custom",
+
+                  data: {
+                    type: "updateStatus",
+                  },
+                },
+              ])
+            }
+            className="new-flow-adv-item"
+          >
             <UpdateStatus />
             <p className="text-black-abz-12">Update Chat Status</p>
           </div>
-          <div className="new-flow-adv-item">
+          <div
+          onClick={() =>
+            SetNode([
+              ...Node,
+              {
+                id: Date.now() + "",
+                position: {
+                  x: Node.length * 40 + 10,
+                  y: Node.length * 40 + 10,
+                },
+                type: "custom",
+
+                data: {
+                  type: "template",
+                },
+              },
+            ])
+          } className="new-flow-adv-item">
             <TemplateSvg />
             <p className="text-black-abz-12">Template</p>
           </div>
-          <div className="new-flow-adv-item">
+          <div onClick={() =>
+            SetNode([
+              ...Node,
+              {
+                id: Date.now() + "",
+                position: {
+                  x: Node.length * 40 + 10,
+                  y: Node.length * 40 + 10,
+                },
+                type: "custom",
+
+                data: {
+                  type: "timeDelay",
+                },
+              },
+            ])
+          } className="new-flow-adv-item">
             <TimeDelay />
             <p className="text-black-abz-12">Time Delay</p>
           </div>

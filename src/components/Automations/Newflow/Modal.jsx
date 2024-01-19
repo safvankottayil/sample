@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setNewFlowData, setquestionModal } from "../../../Redux/Client";
 import Editer from "../../Editer2/Editer2";
-import "./customnode.css";
+import "./CustomNodes/customnode.css";
 import AddSvg from "../../Svgs/Newflow/AddSvg";
 import DeleteSvg from "../../Svgs/DeleteSvg";
 export default function Modal({ nodes, setNodes }) {

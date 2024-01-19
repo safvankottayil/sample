@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import "./customnode.css";
+import "./CustomNodes/customnode.css";
 import DropDown from "../../FilterDropDown/DropDown";
 import { useDispatch, useSelector } from "react-redux";
 import { setconditionModal } from "../../../Redux/Client";
-import VariableDropDown from "./VariableDropDown";
+import VariableDropDown from "./HelperComponent/VariableDropDown";
 import QestionSvg from "../../Svgs/Newflow/QestionSvg";
 // import { dispatch } from "d3";
 
